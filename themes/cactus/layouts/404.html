@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div>
+  <ul class="post-list">
+    <li class="post-item">
+      <div class="meta"></div>
+      404 Not Found
+    </li>
+    <li class="post-item">
+      <div class="meta"></div>
+      Are you Lost?
+    </li>
+    <li class="post-item">
+      <div class="meta"></div>
+      <p></p>
+      <!-- My recent post -->
+    </li>
+    <li class="post-item">
+      <div class="meta"></div>
+      My recent post
+    </li>
+    {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+
+    {{ range (sort (.Paginator 5).Pages "Date" "desc") }}
+    <li class="post-item">
+      <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time>
+      </div>
+      <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }}
+          {{- print "Untitled" -}}{{ end }}</a></span>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
