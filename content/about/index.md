@@ -1,8 +1,8 @@
 ---
 title: 关于
-draft: true
+draft: false
 date: 2018-06-10 10:36:30
-# layout: page
+layout: page
 ---
 
 # About me

@@ -57,10 +57,13 @@
     <ul class="post-list">
       {{ .Scratch.Set "count" 5 }}
       {{ range (sort .Paginator.Pages "Date" "desc") }}
+      {{ if (eq .Layout "page" ) }}
+      {{ else }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
         </li>
+      {{ end }}
       {{ end }}
     </ul>
     {{ partial "pagination.html" . }}
