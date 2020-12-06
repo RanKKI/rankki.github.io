@@ -9,7 +9,7 @@ categories:
 ---
 
 
-今天凌晨，苹果在 Steve Jobs Theater 举办了 2018 年秋季发布会，发布了  iPhone XS、 iPhone XS Max、iPhone XR 和 Apple Watch Series 4 等新品。
+今天凌晨，苹果在 Steve Jobs Theater 举办了 2018 年秋季发布会，发布了 iPhone XS、 iPhone XS Max、iPhone XR 和 Apple Watch Series 4 等新品。
 
 虽然 iPad Pro 和 Mac 并没有如预期在本次发布会亮相，但是 3 款新 iPhone 和屏幕更大的 Apple Watch 依然看点十足。
 
@@ -43,7 +43,7 @@ AirPower 充电枕和 AirPods 无线充电盒并未出现在本次发布会上
 
  - 屏幕增大 30%，机身尺寸不变，兼容旧表带
  - 更薄机身：10.7mm
-支持触觉反馈的数码表冠
+ - 支持触觉反馈的数码表冠
  - 全新的电极式心率传感器、第二代光学心率传感器：支持绘制心电图
  - 支持摔倒检测 
  - 金、银、深空灰 3 种颜色

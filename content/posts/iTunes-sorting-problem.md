@@ -12,13 +12,13 @@ categories:
 
 搜索了下相关问题，知道 iTunes 有一个标签， sorting name， 即 iTunes 可以按照这个变量进行排序，比如将中文转换成拼音，或者日文转成罗马音。 这样就可以正常排序了。 
 
-解决方法是有了，但曲库都是以几百首计算的， 不可能一个一个的去改。 作为程序员，要遵守
+解决方法是有了，但曲库都是以几百首、几千上万计算的， 不可能一个一个的去改。 作为程序员，要遵守
 
 > 宁愿写 1，2个小时的脚本，也不愿意花半小时手动完成任务
 
 当然，写脚本是为了以后，新增歌曲的时候，可以自动化的完成编辑，可以省很多时间。
 
-macOS (从 10.5 开始）提供了接口，叫做`ScriptingBridge`, 位于 
+macOS (从 10.5 开始）提供了接口，叫做 `ScriptingBridge`, 位于
 
 > /System/Library/Frameworks/Python.framework/Versions/Current/Extras/lib/python/PyObjC/
 
