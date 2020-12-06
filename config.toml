@@ -1,5 +1,7 @@
 baseURL = "https://rankki.xyz/"
 languageCode = "zh-cn"
+googleAnalytics = "UA-102355473-2"
+
 title = "RanKKI's Blog"
 author = "Hugh(Hui) Liu"
 copyright = "Hugh(Hui) Liu"
@@ -8,24 +10,23 @@ theme = "cactus"
 paginate = 15
 
 [markup.goldmark.renderer]
-unsafe= true
+  unsafe= true
 
 [params]
-  showAllPostsOnHomePage = true
   showCategories = true
-  rss = true
+  colortheme = "white"
 
 [[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
+  name = "Home"
+  url = "/"
+  weight = 1
 
 [[menu.main]]
-name = "About"
-url = "/about"
-weight = 2
+  name = "About"
+  url = "/about"
+  weight = 2
 
 [[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
+  name = "Tags"
+  url = "/tags"
+  weight = 3
