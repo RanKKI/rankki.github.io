@@ -12,8 +12,11 @@ Bachelor of Computer Science, Specialize in Data Science
 
 目前在 _Hortor Games_ 实习, 使用 Typescript + egret 写游戏前端
 
-<p>
+----
+
 Find me on
+
+
 <a class="icon" target="_blank" rel="noopener" href="https://github.com/RanKKI">
     <i class="fab fa-github"></i>
     @RanKKI
@@ -28,4 +31,3 @@ Find me on
     <i class="fab fa-mastodon"></i>
     @rankki@m.cmx.im
 </a>
-</p>
