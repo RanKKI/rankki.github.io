@@ -9,6 +9,18 @@ copyright = "Hugh(Hui) Liu"
 theme = "cactus"
 paginate = 15
 
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+
 [markup.goldmark.renderer]
   unsafe= true
 

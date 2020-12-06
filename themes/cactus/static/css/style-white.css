@@ -1604,7 +1604,7 @@
   }
   .highlight pre {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     border: none;
     background: none;
   }

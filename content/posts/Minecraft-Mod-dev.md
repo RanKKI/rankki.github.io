@@ -62,14 +62,14 @@ JDK 请要确保是1.8, 我使用1.10的时候遇到很多错误, (也希望Mine
 
 打开命令行进入MDK的目录, 使用命令
 
-```
+```bash
 Windows: "gradlew setupDecompWorkspace"
 Linux/macOS: "./gradlew setupDecompWorkspace"
 ```
 
 在一切结束后, 打开IDEA, 导入这个项目, 然后选择'import project from external model'中的Gradle, 下一步之后选择'Use default gradle wrapper(recommended), 然后IDEA就会自己安装依赖等, 这个过程可能需要一些时间. 在IDEA完成建立索引之后, 关闭IDEA, 使用命令行进入MDK目录, 并使用
 
-```
+```bash
 Windows: "gradlew genIntellijRuns"
 Linux/macOS: "./gradlew genIntellijRuns"
 ```
@@ -80,7 +80,7 @@ Linux/macOS: "./gradlew genIntellijRuns"
 
 我们只需要在意src/中文件就好了, 这里是源码的存放地.
 
-```
+```bash
 $ tree src/
 
 src
@@ -95,12 +95,11 @@ src
         └── pack.mcmeta
 
 6 directories, 3 files
-
 ```
 
 java/ 下放着Mod的源码, resource/里则是Mod的资源文件.
 
-```
+```bash
 $ cat src/main/resource/mcmod.info
 
 [{
@@ -198,7 +197,6 @@ java
             └── Ruby.java
 
 3 directories, 1 file
-
 ```
 
 然后来看一下resources/目录的结构
@@ -224,7 +222,7 @@ resources
 
 接着, 修改mcmod.info.
 
-```json
+```bash
 $ cat mcmod.info
 
 [{
@@ -236,14 +234,15 @@ $ cat mcmod.info
   "url": "", //mod的地址, 比如开源mod会放在GitHub上
   "updateUrl": "", // 更新用的地址, 检查mod是否需要更新
   "authorList": ["ExampleDude"], //作者
-  "credits": "The Forge and FML guys, for making this example", //这个不太知道怎么翻译, 就类似于感谢下谁的帮助啊, 谁参与制作了之类的
+  "credits": "The Forge and FML guys, for making this example", 
+    //这个不太知道怎么翻译, 就类似于感谢下谁的帮助啊, 谁参与制作了之类的
   "dependencies": [] //依赖, 如果你的mod需要其他mod的依赖, 需要在这里表明
 }]
 ```
 
 那么, 根据以上信息, 就可以完成一下这个mcmod.info, 除了modid为必须项, 其他都是选填.
 
-```json
+```bash
 $ cat resources/mcmod.info
 
 [{
@@ -256,12 +255,11 @@ $ cat resources/mcmod.info
   "authorList": ["RanKKI"],
   "credits": "RanKKI"
 }]
-
 ```
 
 > update, version和mcversion是不推荐填写的, 因为在便宜过程中, 它会根据build.gradle设置而改变
 >
-> ```
+```
  processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
@@ -285,7 +283,6 @@ $ cat resources/mcmod.info
 然后进入Ruby.java里, 修改一下配置, 让forge可以读取到这个mcmod.info文件.
 
 ```java
-
 @Mod(modid = Ruby.modid, useMetadata = true)
 public class Ruby {
 
@@ -334,7 +331,6 @@ public class IngotRuby extends Item {
     }
 
 }
-
 ```
 
 下一步就是为这个物品添加材质, 这里就直接拿铁锭换色吧.(图片上传不到图床, 等下就直接在游戏中展示吧.)
@@ -350,7 +346,6 @@ ingotRuby.json
     "layer0": "ruby:item/ingotruby" // 这个就是材质了, 名字为 modid:item/<item_name>
   }
 }
-
 ```
 
 在完成这些之后, 我们还需要在游戏中注册一下这个物品才行, 进入到主类 Ruby.java, 在preinit里添加注册需要的代码.
@@ -360,14 +355,11 @@ ingotRuby.json
 我在IngotRuby这个物品中添加了一个方法,
 
 ```java
-
 public class IngotRuby extends Item {
 
     private static final String name = "ingotRuby";
     private static final String registryName = Ruby.modid + ":" + name;
     private static final String unlocalizedName = Ruby.modid + "." + name;
-
-
 
     public IngotRuby() {
         setUnlocalizedName(unlocalizedName);
@@ -380,8 +372,6 @@ public class IngotRuby extends Item {
     }
 
 }
-
-
 ```
 所以, 在主类中, 新建一个IngotRuby出来, 并且调用它的register方法.
 
@@ -405,7 +395,6 @@ public void preInit(FMLPreInitializationEvent event) {
 万幸的是Forge提供了接口让开发者可以简单的调用, @SidedProxy, 它有两个参数, clientSide和serverSide, 都是选填.
 
 ``` java
-
     /**
      * The full name of the client side class to load and populate.
      * Defaults to the nested class named "ClientProxy" in the current class.
@@ -417,13 +406,11 @@ public void preInit(FMLPreInitializationEvent event) {
      * Defaults to the nested class named "ServerProxy" in the current class.
      */
     String serverSide() default "";
-
 ```
 
 在为空, 也就是不填入的情况下, 它会默认使用当前类中的 ClientProxy和ServerProxy, 因为现在的mod并不复杂, 所以只要在主类中新建两个类就好了, 使我们的主类看起来像这样。
 
 ```java
-
 @Mod(modid = Ruby.modid, useMetadata = true)
 public class Ruby {
 
@@ -469,10 +456,11 @@ public class Ruby {
 
 ```java
 public void registerTextures(){
-Minecraft.getMinecraft().getRenderItem()
-	.getItemModelMesher()
-	.register(this,0,
-	new ModelResourceLocation(ingotRuby.registryName, "inventory"));
+    Minecraft.getMinecraft().getRenderItem()
+	    .getItemModelMesher()
+	    .register(this, 0,
+	        new ModelResourceLocation(ingotRuby.registryName, "inventory")
+        );
 }
 ```
 
@@ -482,7 +470,6 @@ public void loadModel() {
 	super.loadModel();
 	ingotRuby.registerTextures();
 }
-
 ```
 
 然后在init里加入 proxy.loadModel();
