@@ -2,7 +2,6 @@
 title: 关于
 draft: false
 date: 2018-06-10 10:36:30
-layout: page
 ---
 
 # About me
