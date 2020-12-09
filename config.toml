@@ -28,6 +28,9 @@ paginate = 15
   showCategories = false
   colortheme = "white"
 
+[taxonomies]
+  tag = "tags"
+
 [[menu.main]]
   name = "Home"
   url = "/"
