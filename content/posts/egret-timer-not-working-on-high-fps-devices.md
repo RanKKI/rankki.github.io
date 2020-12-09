@@ -3,7 +3,7 @@ title: "白鹭 Egret 引擎在高帧率设备上 Timer 不准确的解决"
 date: 2020-12-05T21:14:46+08:00
 tags:
  - Egret
- - 微信小游戏
+ - WeChat
 categories:
  - 技术
 ---

@@ -3,7 +3,6 @@ title: 修复在 Python 交互界面中无法使用方向键和 tab 键
 date: 2019-03-23 14:32:12
 tags: 
  - Python
- - 记录
 categories:
  - 技术
 ---

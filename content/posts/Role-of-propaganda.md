@@ -2,7 +2,7 @@
 title: 宣传的作用
 date: 2018-07-05 22:05:42
 tags:
- - 记录
+ - Quote
 categories:
  - 生活
 ---

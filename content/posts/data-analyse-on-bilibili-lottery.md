@@ -2,7 +2,7 @@
 title: 对于 Bilibili 抽奖的数据分析
 date: 2020-06-06 12:07:37
 tags:
- - 数据分析
+ - DataAnalysis
  - Bilibili
 categories:
  - 技术
