@@ -3,7 +3,8 @@ title: '在 NAS 上安装 TimeMachine'
 date: 2019-02-20 00:36:56
 tags:
  - Apple
- - 记录
+ - TimeMachine
+ - NAS
 categories:
  - 技术
 ---

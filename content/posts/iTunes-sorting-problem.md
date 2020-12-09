@@ -2,7 +2,7 @@
 title: iTunes 中日英歌曲排序问题
 date: 2020-10-18 14:20:02
 tags:
- - 脚本
+ - Script
  - iTunes
 categories:
  - 技术
