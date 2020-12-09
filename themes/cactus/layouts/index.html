@@ -54,16 +54,14 @@
 
     <span class="h2">Most Recent</span>
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+    {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
     <ul class="post-list">
       {{ .Scratch.Set "count" 5 }}
-      {{ range (sort .Paginator.Pages "Date" "desc") }}
-      {{ if (eq .Layout "page" ) }}
-      {{ else }}
+      {{ range (.Paginate $mainPosts).Pages }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{- .Title -}}</a></span>
         </li>
-      {{ end }}
       {{ end }}
     </ul>
     {{ partial "pagination.html" . }}
