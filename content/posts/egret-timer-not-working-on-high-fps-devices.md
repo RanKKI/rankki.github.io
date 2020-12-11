@@ -1,5 +1,5 @@
 ---
-title: "白鹭 Egret 引擎在高帧率设备上 Timer 不准确的解决"
+title: "白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决"
 date: 2020-12-05T21:14:46+08:00
 tags:
  - Egret
@@ -17,3 +17,52 @@ categories:
 其中一位指出，白鹭也是这么做的，通过查看源码，确实是的， 但在注释里标记了，最高支持到 60 FPS, 而 iPad Pro 是 120 FPS 的设备，因此导致了 1000ms Delay 的 Timer，会在 1 秒内触发两次，而我们的倒计时并没有计算时间的差值，而是直接 `timer--` 所以导致速度异常。
 
 而 Web 端没有问题是因为项目有限制 FPS 到 60， 但这个限制对微信小游戏不好使，解决方法是手动使用 `wx.setPreferredFramesPerSecond(fps)`, 限制 FPS 到 60。
+
+## 分析
+```ts {hl_lines=109, linenostart=101}
+public set delay(value: number) {
+    if (value < 1) {
+        value = 1;
+    }
+    if (this._delay == value) {
+        return;
+    }
+    this._delay = value;
+    this.lastCount = this.updateInterval = Math.round(60 * value);
+}
+```
+
+```ts {linenostart=247}
+/**
+* @private
+* Ticker以60FPS频率刷新此方法
+*/
+$update(timeStamp: number): boolean {
+    let deltaTime = timeStamp - this.lastTimeStamp;
+    if (deltaTime >= this._delay) {
+        this.lastCount = this.updateInterval;
+    }
+    else {
+        this.lastCount -= 1000;
+        if (this.lastCount > 0) {
+            return false;
+        }
+        this.lastCount += this.updateInterval;
+    }
+    this.lastTimeStamp = timeStamp;
+    this._currentCount++;
+    let complete = (this.repeatCount > 0 && this._currentCount >= this.repeatCount);
+    if (this.repeatCount == 0 || this._currentCount <= this.repeatCount) {
+        egret.TimerEvent.dispatchTimerEvent(this, egret.TimerEvent.TIMER);
+    }
+    if (complete) {
+        this.stop();
+        TimerEvent.dispatchTimerEvent(this, TimerEvent.TIMER_COMPLETE);
+    }
+    return false;
+}
+```
+
+白鹭在设置 delay 的时候，会更新 `updateInterval`, 以 `60 * dealy` 的速度更新, 然后 `$update` 方法是以系统默认的刷新率刷新的。
+
+比如在 60fps 设备上用 1/60s 调用 `$update`，而在 120fps 设备上是以 `1/120s` 调用，但 `updateInterval` 却还保持在 60，因此导致在 120fps 设备上，设置的 dalay 从原本1000ms，变成了 500ms, 也就导致了 1s 内发了两次事件
