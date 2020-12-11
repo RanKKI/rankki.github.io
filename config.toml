@@ -6,6 +6,9 @@ title = "RanKKI's Blog"
 author = "Hugh(Hui) Liu"
 copyright = "Hugh(Hui) Liu"
 
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
 theme = "cactus"
 paginate = 15
 
@@ -13,7 +16,6 @@ paginate = 15
   [markup.highlight]
     codeFences = true
     guessSyntax = false
-    hl_Lines = ""
     lineNoStart = 1
     lineNos = true
     lineNumbersInTable = true
@@ -27,6 +29,7 @@ paginate = 15
 [params]
   showCategories = false
   colortheme = "white"
+  css = ["syntax.css"]
 
 [taxonomies]
   tag = "tags"
