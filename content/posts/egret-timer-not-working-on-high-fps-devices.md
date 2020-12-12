@@ -20,7 +20,7 @@ categories:
 
 ## 分析
 
-ergret-core/src/egret/utils/Timer.ts [source code](https://github.com/egret-labs/egret-core/blob/0ffe47cb869e0b4b562f3b20b6f4bfd9ddfdd86a/src/egret/utils/Timer.ts)
+ergret-core/src/egret/utils/Timer.ts [source](https://github.com/egret-labs/egret-core/blob/0ffe47cb869e0b4b562f3b20b6f4bfd9ddfdd86a/src/egret/utils/Timer.ts)
 
 ```ts {hl_lines=[109], linenostart=101}
 public set delay(value: number) {
@@ -66,6 +66,6 @@ $update(timeStamp: number): boolean {
 }
 ```
 
-白鹭在设置 delay 的时候，会更新 `updateInterval`, 以 `60 * dealy` 的速度更新, 然后 `$update` 方法是以系统默认的刷新率刷新的。
+白鹭在设置 delay 的时候，会对 `updateInterval` 赋值 `60 * dealy`, 然后 `$update` 方法中，会对这个值做计算，然后调用事件， 但 `$update` 方法是以系统默认的刷新率刷新的。
 
 比如在 60fps 设备上用 1/60s 调用 `$update`，而在 120fps 设备上是以 `1/120s` 调用，但 `updateInterval` 却还保持在 `60 * dealy`，因此导致在 120fps 设备上，设置的 dalay 从原本 1000ms，变成了 500ms, 也就导致了 1s 内发了两次事件
