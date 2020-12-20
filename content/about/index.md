@@ -9,7 +9,7 @@ Monash University 莫纳什大学
 
 Bachelor of Computer Science, Specialize in Data Science
 
-目前在 _Hortor Games_ 实习, 使用 Typescript + egret 写游戏前端
+Python, Golang, Typescript
 
 ----
 
