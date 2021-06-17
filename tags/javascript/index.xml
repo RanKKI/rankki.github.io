@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Javascript on RanKKI's Blog</title><link>https://rankki.xyz/tags/javascript/</link><description>Recent content in Javascript on RanKKI's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Wed, 08 Apr 2020 19:36:32 +0000</lastBuildDate><atom:link href="https://rankki.xyz/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Javascript 逆向找到 genToken() 源码</title><link>https://rankki.xyz/posts/javascript-token-function-reveal/</link><pubDate>Wed, 08 Apr 2020 19:36:32 +0000</pubDate><guid>https://rankki.xyz/posts/javascript-token-function-reveal/</guid><description>最近开始了我的实习之旅，爬虫相关的， 然后就遇到某个网站在获取部分url的时候, header里会带有一个token, 根据内容能发现是hmac加密的
+没有token的时候一律会返回错误， 于是研究了下JS的逆行，找到了生成token的function
+理念就是打断点，先是针对于url的断点，找到是在哪个js文件中发生了http请求
+然后顺着call stack一层一层往上找，看在哪里生成的header
+然后在getAuthToken()这里打点, 能在环境变量里看到用于加密使用的key
+然后顺着找到getAuthToken()的源码,
+1 2 3 4 5 6 7 8 9 function (t){ var e=s.initConfig.getConfig(&amp;#34;env&amp;#34;), n=this.authKeys[e], r=s.initConfig.getTimeOffset(), i=(new Date).getTime()+r, a=(t&amp;amp;&amp;amp;t.authAcl||&amp;#34;&amp;#34;)+&amp;#34;/*&amp;#34;, u=(0,o.default)({},this.akamaiAuthconfig,{key:n,time:i,acl:a}); return new c.default(u).generateToken() } 以及c.default(u).generateToken()的源码
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 var t = this.getIpField() + this.getStartTimeField() + this.getExprField() + this.getAclField() + this.getSessionIdField() + this.getDataField(), e = t + &amp;#34;&amp;#34; + this.</description></item></channel></rss>
