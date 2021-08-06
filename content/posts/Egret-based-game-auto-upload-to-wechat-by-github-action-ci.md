@@ -1,7 +1,6 @@
 ---
-title: "发布基于白鹭引擎到微信平台的CI/CD"
+title: "自动发布白鹭引擎小游戏到微信平台 CI/CD"
 date: 2021-07-14T18:30:36+08:00
-draft: true
 categories:
  - 技术
 tags:
