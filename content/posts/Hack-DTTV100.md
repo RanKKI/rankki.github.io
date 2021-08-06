@@ -46,7 +46,7 @@ categories:
 
  ![Fruity Wifi](https://i.loli.net/2018/12/27/5c24bdf1128a0.png)
 
- 之后ssh登陆到树莓派，新建一个` /launcher/data/1254621050` 目录，然后把其他应用市场的文件放进去并重命名为`DSMClient20180727.apk`
+ 之后ssh登陆到树莓派，新建一个`/launcher/data/1254621050` 目录，然后把其他应用市场的文件放进去并重命名为`DSMClient20180727.apk`
  
  并用Python也好，其他语言框架也好，在目录上搭建一个file server，并设置端口为 7084
 
