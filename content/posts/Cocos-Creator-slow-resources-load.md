@@ -18,17 +18,17 @@ categories:
 
 # TLDR;
 
-CC 在资源加载 `cc.resources.load` 执行了太多操作。 设计上十分的粗燥。在加载已经加载过的资源时，CC 在取缓存之前做了太多无意义的操作。因此，解决方案是自己在业务层手动封装一个 `getRes` 之类的方法，直接拿缓存，不走 CC 自己的那一套。
+CC 在资源加载 `cc.resources.load` 执行了太多操作。 设计上十分的粗燥。在加载已经加载过的资源时，CC 在取缓存之前做了太多无意义的操作。因此，解决方案是自己在业务层手动封装一个 `loadRes` 之类的方法，直接那文件的 uuid，然后从 assets 里通过 uuid 拿资源，不走 CC 自己的那一套。
 
 ```ts
-export async function getRes<T extends cc.Asset>(path: string, type: typeof cc.Asset): Promise<T> {
+export async function loadRes<T extends cc.Asset>(path: string, type: typeof cc.Asset): Promise<T> {
     if (!path) {
         return
     }
     let bundle = cc.resources
     let bundleName = "resources"
     if (!bundle.getInfoWithPath(path)) {
-        bundleName = "remoteAsset"
+        bundleName = "remote"
         bundle = cc.assetManager.getBundle(bundleName)
         if (!bundle) {
             bundle = await new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ export async function getRes<T extends cc.Asset>(path: string, type: typeof cc.A
             })
         }
     }
-    let res = getResFromBundle<T>(bundleName, path, type)
+    const res = await getResFromBundle<T>(bundleName, path, type)
     if (res) {
         return res
     }
@@ -51,9 +51,12 @@ export async function getRes<T extends cc.Asset>(path: string, type: typeof cc.A
 
 export async function getResFromBundle<T extends cc.Asset>(bundle: string, path: string, type: typeof cc.Asset): Promise<T> {
     if (!path) {
-        return
+        return null
     }
     const uuid = pathToUUID(bundle, path, type)
+    if (!uuid) {
+        return null
+    }
     const res = cc.assetManager.assets.get(uuid)
     if (res) {
         return res as T
@@ -61,20 +64,23 @@ export async function getResFromBundle<T extends cc.Asset>(bundle: string, path:
     return null
 }
 
-function pathToUUID<T extends cc.Asset>(bundleName: string, path: string, type: typeof cc.Asset): string {
+function pathToUUID(bundleName: string, path: string, type: typeof cc.Asset): string {
     const bundles = cc.assetManager.bundles
-    if (bundles.has(bundleName)) {
-        let bundle = bundles.get(bundleName)
-        let info = bundle.getInfoWithPath(path, type)
-        if (info && info.redirect) {
-            if (!bundles.has(info.redirect)) {
-                throw new Error("you can't get a uuid from a unloaded bundle")
-            }
-            bundle = bundles.get(info.redirect)
-            info = bundle.getInfoWithPath(path, type)
+    const getFromBundle = (name: string): string => {
+        if (!bundles.has(name)) {
+            return null
+        }
+        const bundle = bundles.get(name)
+        const info = bundle.getInfoWithPath(path, type)
+        if (!info) {
+            return null
+        }
+        if (info.redirect) {
+            return getFromBundle(info.redirect)
         }
         return info.uuid
     }
+    return getFromBundle(bundleName)
 }
 ```
 
