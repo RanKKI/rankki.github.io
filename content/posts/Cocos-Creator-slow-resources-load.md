@@ -3,7 +3,7 @@ title: "修复 Cocos Creator 加载资源过慢"
 date: 2021-09-10T11:56:35+08:00
 draft: false
 tags:
- - CocosCreator
+ - Cocos Creator
 categories: 
  - 技术
 ---
