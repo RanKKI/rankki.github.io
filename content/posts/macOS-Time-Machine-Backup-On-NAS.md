@@ -9,6 +9,7 @@ categories:
  - 技术
 ---
 
+<!--more-->
 ## 安装
 
 ```bash

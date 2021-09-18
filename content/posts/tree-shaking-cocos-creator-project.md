@@ -8,7 +8,13 @@ tags:
  - Cocos Creator
 ---
 
-> 一个原本 200KB 的代码文件，可以被缩减到 110KB
+Cocos Creator 打包出的项目，会对每个文件生成 `helper function`，但实际上，我们只有一个 `index.js`，在打包的时候却把所有的 `helper function` 打到了一起，因此导致一个 `index.js` 文件内，拥有很多个 `helper function`
+
+因此可以通过 Tree Shaking 的方法能裁切掉很多无用的函数定义，从而降低文件大小. 
+
+<!--more-->
+
+> 通过改方法，可以将一个原本 200KB 的代码文件，可以被缩减到 110KB
 
 ```javascript
 'use strict';

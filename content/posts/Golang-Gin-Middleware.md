@@ -8,6 +8,8 @@ categories:
     - 技术
 ---
 
+<!--more-->
+
 最近在学习 Golang + Gin + Vue.js 的项目, 在处理 CORS 跨域问题上发现了个不算坑的坑.
 
 ```golang

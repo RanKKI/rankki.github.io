@@ -1,5 +1,5 @@
 ---
-title: Apple 特别发布会
+title: Apple 2018 特别发布会
 date: 2018-09-13 11:40:43
 tags:
  - Apple
@@ -9,6 +9,8 @@ categories:
 
 
 今天凌晨，苹果在 Steve Jobs Theater 举办了 2018 年秋季发布会，发布了 iPhone XS、 iPhone XS Max、iPhone XR 和 Apple Watch Series 4 等新品。
+
+<!--more-->
 
 虽然 iPad Pro 和 Mac 并没有如预期在本次发布会亮相，但是 3 款新 iPhone 和屏幕更大的 Apple Watch 依然看点十足。
 

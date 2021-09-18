@@ -7,6 +7,8 @@ categories:
  - 技术
 ---
 
+<!--more-->
+
 ```typescript
 let container: egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
 let blendShape = new egret.Shape(); // 用来作为遮挡背景
