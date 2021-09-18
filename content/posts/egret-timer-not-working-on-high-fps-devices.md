@@ -14,11 +14,11 @@ categories:
 
 经过测试， web 端不会出现这个情况，但微信小游戏上会有速度变快。
 
-首先是在白鹭的开发者论坛上，找了个一篇帖子[基于系统时间的计时器DateTimer(不受FPS影响)](https://bbs.egret.com/thread-27732-1-1.html)看了下代码， 没有问题， 根据时间戳计算差值，然后再 dispatch 事件。 便直接放进项目里尝试，确实解决了倒计时变快的问题，但这很怪异，白鹭不应该会有这么奇怪的 bug, 然后我的 Leader 拉了个群， 其中包括引擎组和隔壁项目组的大佬们，讨论这个问题。
+首先是在白鹭的开发者论坛上，找了个一篇帖子[基于系统时间的计时器 DateTimer(不受 FPS 影响)](https://bbs.egret.com/thread-27732-1-1.html)看了下代码， 没有问题， 根据时间戳计算差值，然后再 dispatch 事件。 便直接放进项目里尝试，确实解决了倒计时变快的问题，但这很怪异，白鹭不应该会有这么奇怪的 bug，然后我的 Leader 拉了个群， 其中包括引擎组和隔壁项目组的大佬们，讨论这个问题。
 
-其中一位指出，白鹭也是这么做的，通过查看源码，确实是的， 但在注释里标记了，最高支持到 60 FPS, 而 iPad Pro 是 120 FPS 的设备，因此导致了 1000ms Delay 的 Timer，会在 1 秒内触发两次，而我们的倒计时并没有计算时间的差值，而是直接 `timer--` 所以导致速度异常。
+其中一位指出，白鹭也是这么做的，通过查看源码，确实是的， 但在注释里标记了，最高支持到 60 FPS，而 iPad Pro 是 120 FPS 的设备，因此导致了 1000ms Delay 的 Timer，会在 1 秒内触发两次，而我们的倒计时并没有计算时间的差值，而是直接 `timer--` 所以导致速度异常。
 
-而 Web 端没有问题是因为项目有限制 FPS 到 60， 但这个限制对微信小游戏不好使，解决方法是手动使用 `wx.setPreferredFramesPerSecond(fps)`, 限制 FPS 到 60。
+而 Web 端没有问题是因为项目有限制 FPS 到 60， 但这个限制对微信小游戏不好使，解决方法是手动使用 `wx.setPreferredFramesPerSecond(fps)`，限制 FPS 到 60。
 
 ## 分析
 
@@ -40,7 +40,7 @@ public set delay(value: number) {
 ```ts {hl_lines=[253, 254, 256], linenostart=247}
 /**
 * @private
-* Ticker以60FPS频率刷新此方法
+* Ticker 以 60FPS 频率刷新此方法
 */
 $update(timeStamp: number): boolean {
     let deltaTime = timeStamp - this.lastTimeStamp;
@@ -68,6 +68,6 @@ $update(timeStamp: number): boolean {
 }
 ```
 
-白鹭在设置 delay 的时候，会对 `updateInterval` 赋值 `60 * dealy`, 然后 `$update` 方法中，会对这个值做计算，然后调用事件， 但 `$update` 方法是以系统默认的刷新率刷新的。
+白鹭在设置 delay 的时候，会对 `updateInterval` 赋值 `60 * dealy`，然后 `$update` 方法中，会对这个值做计算，然后调用事件， 但 `$update` 方法是以系统默认的刷新率刷新的。
 
-比如在 60fps 设备上用 1/60s 调用 `$update`，而在 120fps 设备上是以 `1/120s` 调用，但 `updateInterval` 却还保持在 `60 * dealy`，因此导致在 120fps 设备上，设置的 dalay 从原本 1000ms，变成了 500ms, 也就导致了 1s 内发了两次事件
+比如在 60fps 设备上用 1/60s 调用 `$update`，而在 120fps 设备上是以 `1/120s` 调用，但 `updateInterval` 却还保持在 `60 * dealy`，因此导致在 120fps 设备上，设置的 dalay 从原本 1000ms，变成了 500ms，也就导致了 1s 内发了两次事件

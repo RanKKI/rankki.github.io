@@ -9,13 +9,13 @@ tags:
  - CI/CD
 ---
 
-最近一段时间在使用白鹭 Egret Engine, 为了统一和方便，选择使用 GitHub Action 做 CI/CD，但在折腾的过程中，发现了很多坑。
+最近一段时间在使用白鹭 Egret Engine，为了统一和方便，选择使用 GitHub Action 做 CI/CD，但在折腾的过程中，发现了很多坑。
 
 <!--more-->
 
 > 生命在于折腾
 
-首先要知道的事，微信小程序是有一个 `miniprogram-ci` 的包用于上传项目到平台，而且在微信后台看是不同的开发者，也就意味着可以使用这个bot打包不同的版本。(ci 工具支持最多 30 个bot) [文档*](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
+首先要知道的事，微信小程序是有一个 `miniprogram-ci` 的包用于上传项目到平台，而且在微信后台看是不同的开发者，也就意味着可以使用这个 bot 打包不同的版本。(ci 工具支持最多 30 个 bot) [文档 *](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
 > npm install miniprogram-ci
 

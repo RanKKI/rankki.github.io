@@ -9,9 +9,9 @@ categories:
 
 ## 背景
 
-在日常使用Python中（使用交互界面）时，经常遇到按方向键，会出现^[[D, ^[[A 等符号，以及不能使用tab自动补全, 
+在日常使用 Python 中（使用交互界面）时，经常遇到按方向键，会出现^[[D, ^[[A 等符号，以及不能使用 tab 自动补全，
 
-查了下似乎是readline这个lib的问题， 用brew info查了下， 我的readline库是8.0.0版本
+查了下似乎是 readline 这个 lib 的问题， 用 brew info 查了下， 我的 readline 库是 8.0.0 版本
 
 ```bash
 $ ~ brew info readline
@@ -27,8 +27,8 @@ $ ~ brew info readline
 
 ## 解决方法
 
-方法来源: [StackOverflow](https://stackoverflow.com/a/41560355)
+方法来源：[StackOverflow](https://stackoverflow.com/a/41560355)
 
-在 `/usr/local/opt/readline/lib/` 中, 我的只有 `libreadline.8.dylib`
+在 `/usr/local/opt/readline/lib/` 中，我的只有 `libreadline.8.dylib`
 
-只要把这个链接到 `libreadline.6.dylib` 和 `libreadline.7.dylib` 就能解决问题了.
+只要把这个链接到 `libreadline.6.dylib` 和 `libreadline.7.dylib` 就能解决问题了。

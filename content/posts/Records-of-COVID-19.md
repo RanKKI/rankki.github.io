@@ -7,7 +7,7 @@ categories:
  - 生活
 ---
 
-在看 [金银潭实拍80天(bilibili)](https://www.bilibili.com/bangumi/play/ep338479)，发现如果记录一下自己的经历，可能很有意义。
+在看 [金银潭实拍 80 天 (BiliBili)](https://www.bilibili.com/bangumi/play/ep338479)，发现如果记录一下自己的经历，可能很有意义。
 
 <!--more-->
 

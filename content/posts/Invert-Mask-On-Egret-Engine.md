@@ -24,7 +24,7 @@ renderTexture.drawToTexture(container);
 let blendBitmap = new egret.Bitmap(renderTexture);
 this.addChild(blendBitmap);
 blendBitmap.touchEnabled = true; // 允许点击
-blendBitmap.pixelHitTest = true; // 是否开启精确像素碰撞。设置为true显示对象本身的透明区域将能够被穿透。
+blendBitmap.pixelHitTest = true; // 是否开启精确像素碰撞。设置为 true 显示对象本身的透明区域将能够被穿透。
 this.blendBitmap = blendBitmap
 target.blendMode = egret.BlendMode.NORMAL
 blendBitmap.anchorOffsetX = target.x

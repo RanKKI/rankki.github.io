@@ -14,11 +14,11 @@ categories:
 
 解决方法是有了，但曲库都是以几百首、几千上万计算的， 不可能一个一个的去改。 作为程序员，要遵守
 
-> 宁愿写 1，2个小时的脚本，也不愿意花半小时手动完成任务
+> 宁愿写 1，2 个小时的脚本，也不愿意花半小时手动完成任务
 
 当然，写脚本是为了以后，新增歌曲的时候，可以自动化的完成编辑，可以省很多时间。
 
-macOS (从 10.5 开始）提供了接口，叫做 `ScriptingBridge`, 位于
+macOS (从 10.5 开始）提供了接口，叫做 `ScriptingBridge`，位于
 
 > /System/Library/Frameworks/Python.framework/Versions/Current/Extras/lib/python/PyObjC/
 

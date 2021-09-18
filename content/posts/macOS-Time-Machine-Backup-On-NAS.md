@@ -37,15 +37,15 @@ $ sudo apt-get install netatalk avahi-daemon libnss-mdns
 
 ## 配置
 
-修改Netatalke文件.
+修改 Netatalke 文件。
 
 ```bash
 $ sudo vim /etc/netatalk/AppleVolumes.default
 ```
 
-在文件底部加入 `[Folder] [Name] options:tm` , 比如我的 `\mnt\data\timemachine "Time Machine Backup" options:tm`
+在文件底部加入 `[Folder] [Name] options:tm` ，比如我的 `\mnt\data\timemachine "Time Machine Backup" options:tm`
 
-然后新建一个Avahi服务
+然后新建一个 Avahi 服务
 ```bash
 $ sudo vim /etc/avahi/services/afpd.service
 ```
@@ -68,13 +68,13 @@ $ sudo vim /etc/avahi/services/afpd.service
 </service-group>
 ```
 
-修改nss-mdns配置文件
+修改 nss-mdns 配置文件
 
 ```bash
 $ sudo vim /etc/nsswitch.conf
 ```
 
-在hosts后面加入 mdns4 和 mdns
+在 hosts 后面加入 mdns4 和 mdns
 
 ## 完成设置
 ```bash

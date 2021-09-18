@@ -7,27 +7,27 @@ categories:
  - 技术
 ---
 
-最近开始了我的实习之旅，爬虫相关的， 然后就遇到某个网站在获取部分 URL 的时候, header 里会带有一个 token, 根据内容能发现是 HMAC 加密的
+最近开始了我的实习之旅，爬虫相关的， 然后就遇到某个网站在获取部分 URL 的时候，header 里会带有一个 token，根据内容能发现是 HMAC 加密的
 
-没有token的时候一律会返回错误， 于是研究了下 JS 的逆行，找到了生成 token 的 function
+没有 token 的时候一律会返回错误， 于是研究了下 JS 的逆行，找到了生成 token 的 function
 
 <!--more-->
 
-理念就是打断点，先是针对于url的断点，找到是在哪个js文件中发生了http请求
+理念就是打断点，先是针对于 url 的断点，找到是在哪个 js 文件中发生了 http 请求
 
 ![](https://i.loli.net/2020/04/08/SOp8XdqNaih7CLD.png)
 
-然后顺着call stack一层一层往上找，看在哪里生成的header
+然后顺着 call stack 一层一层往上找，看在哪里生成的 header
 
 ![](https://i.loli.net/2020/04/08/cflYktUxpgHB9QG.png)
 
 ![](https://i.loli.net/2020/04/08/CpcIrAsE3jaxdNl.png)
 
-然后在getAuthToken()这里打点, 能在环境变量里看到用于加密使用的key
+然后在 getAuthToken() 这里打点，能在环境变量里看到用于加密使用的 key
 
 ![](https://i.loli.net/2020/04/08/6oOEAYNVPmzwXRr.png)
 
-然后顺着找到getAuthToken()的源码, 
+然后顺着找到 getAuthToken() 的源码，
 
 ```javascript
 function (t){
@@ -60,7 +60,7 @@ function (t){
         }(this.key))
 ```
 
-再根据实际需要进行简化, 并进行比对，确认这个function正确运行.
+再根据实际需要进行简化，并进行比对，确认这个 function 正确运行。
 
 ```Python
     def gen_token(self):
