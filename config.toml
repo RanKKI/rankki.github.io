@@ -6,6 +6,8 @@ title = "RanKKI's Blog"
 author = "Hugh(Hui) Liu"
 copyright = "Hugh(Hui) Liu"
 
+enableGitInfo = true
+
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
@@ -27,9 +29,13 @@ paginate = 15
   unsafe= true
 
 [params]
-  showCategories = false
+  showCategories = true
   colortheme = "white"
   css = ["syntax.css"]
+  postsonhomepage = 15
+  disablecopy = false
+  showReadTime = true
+  show_updated = true
 
 [taxonomies]
   tag = "tags"
