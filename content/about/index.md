@@ -18,18 +18,6 @@ Bachelor of Computer Science, Specialize in Data Science
 
 Find me on
 
-
-<a class="icon" target="_blank" rel="noopener" href="https://github.com/RanKKI">
-    <span class="iconify" data-icon="line-md:github"></span>
-    @RanKKI
-</a>
-
-<a class="icon" target="_blank" rel="noopener" href="https://t.me/RanKKI_L">
-    <span class="iconify" data-icon="logos:telegram"></span>
-    @RanKKI_L
-</a>
-
-<a class="icon" target="_blank" rel="noopener" href="https://m.cmx.im/@rankki">
-    <span class="iconify" data-icon="logos:mastodon-icon"></span>
-    @rankki@m.cmx.im
-</a>
+- <span class="iconify" data-icon="line-md:github"></span>[@RanKKI](https://github.com/RanKKI)
+- <span class="iconify" data-icon="logos:telegram"></span>[@RanKKI_L](https://t.me/RanKKI_L)
+- <span class="iconify" data-icon="logos:mastodon-icon"></span>[@rankki@m.cmx.im](https://m.cmx.im/@rankki)
