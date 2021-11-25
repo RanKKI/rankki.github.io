@@ -1,0 +1,9 @@
+<div id="header-post">
+  <span id="menu">
+    {{ if not .Site.Params.tocInline }}
+    <div id="toc">
+      {{ .TableOfContents }}
+    </div>
+    {{ end }}
+  </span>
+</div>
