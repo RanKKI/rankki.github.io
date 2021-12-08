@@ -11,7 +11,7 @@ enableGitInfo = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
-theme = "cactus"
+theme = "paper"
 paginate = 15
 
 [markup]
@@ -49,8 +49,3 @@ paginate = 15
   name = "About"
   url = "/about"
   weight = 2
-
-[[menu.main]]
-  name = "Tags"
-  url = "/tags"
-  weight = 3

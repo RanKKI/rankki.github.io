@@ -1,10 +1,9 @@
 ---
-title: 关于
+title: About me
 draft: false
 date: 2018-06-10 10:36:30
 ---
 
-# About me
 Monash University 莫纳什大学
 
 Bachelor of Computer Science, Specialize in Data Science
