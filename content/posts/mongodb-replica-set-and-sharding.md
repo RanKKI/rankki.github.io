@@ -80,7 +80,7 @@ transaction made from client to the primary instance, will automatic sync to all
 
 ```bash
 sudo mkdir -p /srv/mongodb/rs0-0 /srv/mongodb/rs0-1 /srv/mongodb/rs0-2
-sudo mongod --replSet rs0 --port 27017 --bind_ip localhost --dbpath /srv/mongodb/rs0-0 --opdlogSize 128
+sudo mongod --replSet rs0 --port 27017 --bind_ip localhost --dbpath /srv/mongodb/rs0-0 --oplogSize 128
 sudo mongod --replSet rs0 --port 27018 --bind_ip localhost --dbpath /srv/mongodb/rs0-1 --oplogSize 128
 sudo mongod --replSet rs0 --port 27019 --bind_ip localhost --dbpath /srv/mongodb/rs0-2 --oplogSize 128
 ```
@@ -101,9 +101,44 @@ $ rs.add("ip:27019")
 Now, whatever you insert, update or delete to the primary instance (:27017), it also been done to the rest two instances.
 
 ### Sharding
+Since *Replica Set* is used to provide high availability to reduce the downtime. 
+Sharding is solving to many requests at same time to one database instance. *limitation of I/O speed*
 
+> Sharding is a method for distributing data across multiple machines.
+> MongoDB uses sharding to support deployments with very large data
+> sets and high throughput operations.
 
+![](https://docs.mongodb.com/manual/images/sharded-cluster-production-architecture.bakedsvg.svg)
 
+Starting a config server is similar to replica set but with `--configsvr`, (config server must be a replica set)
+```bash
+sudo mongod --configsvr --replSet conf --port 27020 --bind_ip localhost --dbpath /srv/mongodb/conf-0 --oplogSize 128
+```
+
+Those replica set used in sharding must run with `--shardsvr`
+```bash
+sudo mongod -shardsvr --replSet rs0 --port 27017 --bind_ip localhost --dbpath /srv/mongodb/rs0-0 --oplogSize 128
+```
+
+After the config server start, add 2 or more replica set to the config server.
+
+```bash
+mongosh ip:27020
+sh.addShard( "rs0/ip:27017,ip:27018,ip:27019" )
+sh.addShard( "rs1/ip:27017,ip:27018,ip:27019" )
+sh.addShard( "rs2/ip:27017,ip:27018,ip:27019" )
+```
+
+And then using `enableSharding` to set which database for sharding, 
+then determined which key of the collection as *Shard Key*
+
+```bash
+sh.enableSharding("test")
+sh.shardCollection("database.collection", { uid : "hashed" } )
+```
+
+Now connect to the config server just like connecting to a single MongoDB instance,
+Each document will insert to different replica set based the hashed shared key `uid`
 
 ---
 
