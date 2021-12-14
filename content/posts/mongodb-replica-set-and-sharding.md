@@ -46,7 +46,7 @@ redirect to other instance.
 
 ## Deploy MongoDB
 
-### Setup a standalone instance
+### Standalone instance
 
 Installing MongoDB is easy, following the official MongoDB manual from [here](https://docs.mongodb.com/manual/installation/)
 
