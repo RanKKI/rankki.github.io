@@ -1,7 +1,7 @@
 ---
 title: "Deploy MongoDB replica set and sharding"
 date: 2021-12-03T11:33:25+08:00
-draft: false
+draft: true
 tags:
  - mongodb
 categories:
