@@ -37,7 +37,7 @@ categories:
 
 - 完全开源在 [GitHub](https://github.com/RanKKI/LawRefBook)
 - 使用 SwiftUI 驱动
-- 法条内容实用 Markdown 储存 （感觉没啥意义hhh)
+- 法条内容使用 Markdown 储存 （感觉没啥意义hhh)
 - 无网络连接
 - 无数据追踪
 
