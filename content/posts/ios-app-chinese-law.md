@@ -43,5 +43,5 @@ categories:
 
 # 尾
 
-现已在 [App Store](https://apps.apple.com/au/app/%E4%B8%AD%E5%9B%BD%E6%B3%95%E5%BE%8B%E5%BF%AB%E6%9F%A5%E6%89%8B%E5%86%8C/id1612953870) 上价
+现已在 [App Store](https://apps.apple.com/au/app/%E4%B8%AD%E5%9B%BD%E6%B3%95%E5%BE%8B%E5%BF%AB%E6%9F%A5%E6%89%8B%E5%86%8C/id1612953870) 上架
 
