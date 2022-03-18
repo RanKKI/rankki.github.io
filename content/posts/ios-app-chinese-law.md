@@ -7,7 +7,7 @@ tags:
 categories:
  - 技术
 ---
-<img src="https://is3-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/de/79/0a/de790aee-be60-fc38-241b-52e227a3353e/166c3be7-7453-4c94-ba6f-c227cd99b021_Frame_1.png/1242x2688bb.png" width="200">
+<img src="https://s2.loli.net/2022/03/17/EemiTDZlXO9SvfP.png" width="600">
 
 
 # 序
@@ -42,3 +42,10 @@ categories:
 
 现已在 [App Store](https://apps.apple.com/au/app/%E4%B8%AD%E5%9B%BD%E6%B3%95%E5%BE%8B%E5%BF%AB%E6%9F%A5%E6%89%8B%E5%86%8C/id1612953870) 上架
 
+
+# 更新
+## 2020-03-18
+
+<img src="https://s2.loli.net/2022/03/18/GcbCyVopHsMd6Q7.jpg" width="50%">
+
+上 AppStore 每周编辑推荐了！心情真的很棒，言语无法表达的棒
