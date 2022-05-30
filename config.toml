@@ -36,6 +36,7 @@ paginate = 15
   disablecopy = false
   showReadTime = true
   show_updated = true
+  mainSections = ['posts']
 
 [taxonomies]
   tag = "tags"
@@ -54,3 +55,4 @@ paginate = 15
   name = "Tags"
   url = "/tags"
   weight = 3
+
