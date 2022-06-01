@@ -37,6 +37,7 @@ paginate = 15
   showReadTime = true
   show_updated = true
   mainSections = ['posts']
+  showProjectsList = true
 
 [taxonomies]
   tag = "tags"
