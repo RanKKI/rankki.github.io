@@ -9,5 +9,6 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+Disallow: /thoughts/
 
 Sitemap: https://rankki.xyz/sitemap.xml
