@@ -9,6 +9,11 @@
             "name": "黑白胶片冲洗",
             "desc": "帮助胶片佬洗黑白胶片的工具",
             "url": "https://apps.apple.com/us/app/b-w-film-dev/id1626602859"
+        },
+        {
+            "name": "Bangumi",
+            "desc": "自动追番+下载+通知，配合媒体库信息刮削",
+            "url": "https://github.com/RanKKI/Bangumi"
         }
     ]
 }
