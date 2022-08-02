@@ -43,10 +43,10 @@ categories:
  Sub-letting 的合同， 是指二房东，将其中一间屋子再租出来，然后大家共享厨房等公共区域。
 
  这么租的前提，是房东同意房客这样子租，但一般都会同意，除非有一个合理的原因。
- 
- > The head tenant must get written permission from the landlord before sub-letting. 
- > 
- > A landlord must give permission to sub-let， unless there is a good reason to refuse. It is illegal to charge a fee for giving permission. 
+
+ > The head tenant must get written permission from the landlord before sub-letting.
+ >
+ > A landlord must give permission to sub-let， unless there is a good reason to refuse. It is illegal to charge a fee for giving permission.
  >
  > [Source](https://www.consumer.vic.gov.au/housing/renting/types-of-rental-agreements/subletting)
 
@@ -64,7 +64,7 @@ categories:
  > In a co-tenancy， every tenant signs the lease and all tenants are equally responsible for paying rent and taking care of the property.
  >
  > This also means that one individual can be held responsible for the actions of all tenants.
- > 
+ >
  > [Source](https://www.consumer.vic.gov.au/housing/renting/types-of-rental-agreements/co-tenancy-or-joint-tenancy)
 
 
@@ -108,6 +108,32 @@ categories:
  > 即使你拖欠了房租，比如你交房租晚了 5 天，中介/房东要求你支付 $30 的滞纳金 (late payment fees)，这是不合法的
 
 如果合同上注明每周租金 $300，但如果准时交租可优惠，比如只交 $280，这是合法的
+
+## 转租
+
+> 转租部分内容来自维洲官方网站 [Transferring a rental agreement (lease)](https://www.consumer.vic.gov.au/housing/renting/starting-and-changing-rental-agreements/people-moving-in-and-out/transferring-a-rental-agreement)
+
+如果说哪天，诶，去别的城市了或者怎么样了，房租还没到期，就可以考虑转租了
+
+转租首先需要 rental provider 的同意，比如房东或者中介。如果没有拿到同意书，房东可以清走你和另外的租客。
+
+> If the renter transfers their rental agreement without the rental provider’s written consent, they can be asked to leave. The rental provider can end the rental agreement with both the old and new renters and ask them to leave the property in 14 days. Read more about rental providers giving notice to vacate .
+
+### 费用
+
+转租，房东中介可以要求缴纳一笔转租手续费。但这笔钱必须是合理的（即，大部分人认为是合理/公平的费用）
+
+> If the rental provider agrees to the transfer, they can ask the renter to pay reasonable costs for preparing a new rental agreement document. Reasonable costs means costs that most people would think are fair.
+
+同时，房东/中介不可以以同意申请为由，向租客索要费用
+
+### 被拒绝
+
+房东/中介是可以拒绝转租申请的，但必须有一个合理的理由，如果租客觉得不可以，可以跨过房东去 VACT 申请。
+
+> The rental provider must give their consent to transfer the rental agreement, unless there is a good reason to refuse.
+>
+> If the renter is refused consent and thinks it is unfair, they can apply to VCAT to decide that the transfer can go ahead without the rental provider’s consent.
 
 
 ## 搬出
