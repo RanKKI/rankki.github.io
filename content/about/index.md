@@ -14,8 +14,6 @@ Hi 你好，我是Hugh(@RanKKI)，目前就读于澳大利亚莫纳什大学（M
 <span class="iconify" data-icon="logos:typescript-icon"></span>Typescript,
 <span class="iconify" data-icon="simple-icons:cocos"></span>Cocos Creator
 
-「（计算机）语言并不是难题，思维方式才是重点」
-
 喜欢自己捣鼓一些好玩的，学习新的技术、计算机底层知识。
 
 实习经历中比较感同身受的一句话「如果程序运行不正常，那就一定是哪里有问题」，找到问题为什么发生才能解决问题，而不是通过临时修复去掩盖隐藏在深处的 Bug。
