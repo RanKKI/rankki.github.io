@@ -31,7 +31,7 @@ paginate = 15
 [params]
   showCategories = true
   colortheme = "white"
-  css = ["syntax.css"]
+  css = ["css/syntax.css"]
   postsonhomepage = 15
   disablecopy = false
   showReadTime = true
@@ -53,7 +53,12 @@ paginate = 15
   weight = 2
 
 [[menu.main]]
+  name = "Bangumi"
+  url = "/bangumi"
+  weight = 3
+
+[[menu.main]]
   name = "Tags"
   url = "/tags"
-  weight = 3
+  weight = 4
 
