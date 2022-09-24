@@ -2,9 +2,14 @@
 title: "Bangumi"
 ---
 
-下面是一些我看过或者想看的动漫，数据来源 [bgm.tv](https://bgm.tv/)。
+下面是一些我看过或者想看的动漫，数据来源 [api.bgm.tv](https://bangumi.github.io/api/)。
+
+出于各种原因考虑，最多只显示 100 条。全部内容可以在 [bgm.tv/anime/list/725320](https://bgm.tv/anime/list/725320)  看到。
 
 <div id="bangumi_container">
+<div class="loading_container">
+<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
 </div>
 <script type='text/javascript'>
   const groupBy = function (xs, key) {
@@ -55,5 +60,5 @@ title: "Bangumi"
       window.setTimeout(callback, 50);
     }
   }
-  callback();
+  // callback();
 </script>

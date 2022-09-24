@@ -31,7 +31,7 @@ paginate = 15
 [params]
   showCategories = true
   colortheme = "white"
-  css = ["css/syntax.css"]
+  css = ["css/syntax.css", "css/loading.css"]
   postsonhomepage = 15
   disablecopy = false
   showReadTime = true
