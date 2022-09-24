@@ -60,5 +60,5 @@ title: "Bangumi"
       window.setTimeout(callback, 50);
     }
   }
-  // callback();
+  callback();
 </script>
