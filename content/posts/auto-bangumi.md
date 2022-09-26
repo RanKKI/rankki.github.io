@@ -36,6 +36,14 @@ categories:
  - 语言优先级的筛选
  - 自动替换本地视频至较高清的资源（比如目前只有 720P 的放出，在遇到 1080P 的时候还会下载并替换）
  - 完善 API
+ - 与[bgm.tv](https://bgm.tv/)配合，实现更多自动化操作
+
+
+## Jellyfin 自动化
+
+当资源从下载目录移动至储存盘后，Jellyfin 会自动检测更新并挂削数据。不需要更多的手动处理。
+
+我使用 [bgm.tv](https://bgm.tv/) 管理观看内容、进度并发现了一个[插件](https://github.com/kookxiang/jellyfin-plugin-bangumi)可以在看完某集动漫后自动更新网站上的进度.
 
 ## 蜜柑计划
 
