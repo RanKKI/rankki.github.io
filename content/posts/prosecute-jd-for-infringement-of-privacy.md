@@ -97,4 +97,8 @@ categories:
 
 ---
 
+> 题外话， Apple 生态是真的好，pdf 上需要签字，直接在 macOS 的 Previews 上选择签字，iPad 自动打开签字框，用 pencil 签字后会自动截取签字范围，并加到 pdf 里。
+
+---
+
 // To be Continued...
