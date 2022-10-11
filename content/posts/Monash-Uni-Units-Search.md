@@ -13,7 +13,7 @@ categories:
 
 本来是用 python + flask 写的，但后来发现并没有什么需要后端操作的，
 
-于是就把数据用 json 格式储存在 github 上，并且用[Vue.js](https://vuejs.org)写了个前端，用于搜索，同时不需要独立服务器。 
+于是就把数据用 json 格式储存在 github 上，并且用[Vue.js](https://vuejs.org)写了个前端，用于搜索，同时不需要独立服务器。
 
 CSS 框架用的是[MDUI](https://www.mdui.org), HTTP 请求部分用的是[Axios](https://github.com/axios/axios), CDN 用的是[Showfom](https://css.loli.net)家的。
 
@@ -27,3 +27,9 @@ CSS 框架用的是[MDUI](https://www.mdui.org), HTTP 请求部分用的是[Axio
 信息包括了课的代码，名字，faculty，exam 和平时的其他 assessment 成绩，以及哪个学期有课，
 
 然后，因为是写的代码爬的数据，有可能会有信息不对， 如果有发现不对的，可以在 [Telegram](http://t.me/RanKKI_L) 联系到我。
+
+---
+
+没想到，4 年后，2022-10-11，我竟然因为要选课对这个项目进行了更新。（我怎么还没毕业
+
+看了下 4 年前的代码，真的稚嫩，还有这篇内容里有好多排版问题。
