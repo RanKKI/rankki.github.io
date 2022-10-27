@@ -79,3 +79,13 @@ categories:
 
 - 10月20号，约面
 - 10月27号，一面
+
+### 一面
+
+开始问项目，然后就是做题[「Single Element in a Sorted Array」](https://leetcode.com/problems/single-element-in-a-sorted-array/)的变种，没做出来。后续问了下一些八股文
+
+ - 事务 ACID 的 I 是怎么实现的
+ - TCP 握手 Server 发的 ACK 包序列号不对会怎么样
+ - HTTPS 是怎么运作的，证书怎么签发
+
+感觉无望。
