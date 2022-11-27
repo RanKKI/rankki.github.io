@@ -36,6 +36,12 @@ article {
         font-size: 1.2rem;
       }
     }
+    blockquote {
+      display: block;
+      margin: 0px 14px 0px;
+      padding: 10px;
+      border-left: 4px solid #6cb56e;
+    }
   }
   .content img,
   .content video {
