@@ -1,7 +1,7 @@
 ---
 title: "实习 - 特斯拉（上海）"
 date: 2022-11-14T21:26:36+08:00
-draft: false
+draft: true
 tags:
  - 实习
 categories:
