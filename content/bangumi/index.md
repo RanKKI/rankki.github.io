@@ -27,7 +27,7 @@ title: "Bangumi"
   }
   const sort_key = [3, 1, 2, 4, 5]
   const insert = (item) => {
-    $(`#bangumi_container${item.type}`).append(`<div class="column" style="margin-left: 10px;"><a href="https://bgm.tv/subject/${item.subject.id}"><img src="${item.subject.images.medium}" /></a></div>`)
+    $(`#bangumi_container${item.type}`).append(`<div class="column" style="margin-top: 10px; margin-left: 10px; width: 120px"><a href="https://bgm.tv/subject/${item.subject.id}"><img src="${item.subject.images.medium}" /></a></div>`)
   }
   function func() {
     let api = "https://api.bgm.tv"
