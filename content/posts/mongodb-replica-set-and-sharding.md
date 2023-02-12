@@ -1,7 +1,7 @@
 ---
 title: "Deploy MongoDB replica set and sharding"
 date: 2021-12-03T11:33:25+08:00
-draft: true
+draft: false
 tags:
  - mongodb
 categories:
@@ -10,71 +10,59 @@ lang: en
 ---
 
 ## Scale-up or Scale-out
-### Why scale?
-Imagine that you have a computer(server) that can serve 5 users at same time,
-if Alice become the 6th user, Alice has to wait someone released the server
-resources.
 
-It's not friendly to our users, so you must improve the server's performance.
+### Why scale?
+Imagine you have a computer (server) that can serve 5 users at the same time,
+When Alice becomes the 6th user, Alice has to wait for someone to free up the server resources.
+
+It's not user friendly, so you need to improve the performance of the server.
 
 ### Scale-up
 
-You decided to upgrade the hardware, using intel i9 instead i3, upgrade RAM to 64GB from 4GB
-and using 1Gbps fibre broadband instead your ADSL broadband.
+You decide to upgrade the hardware, using Intel i9 instead of i3, upgrading RAM from 4GB to 64GB and using 1Gbps fibre broadband instead of your ADSL broadband.
 
-Now, you can serve 10k users at same time, however Alice become the 10,001st user and 
-you can't upgrade your server anymore, then you will considering scale out
+Now you can serve 10,000 users at the same time, but when Alice becomes the 10001st user and you can't upgrade your server anymore, then you can scale-out your services.
 
 ### Scale-out
 
-If one server can serve 10k users, what if there are 10 servers, 
-which can serve 10k * 10 users at same time.
+If one server can serve 10k users, what if there are 10 servers which can serve 10k * 10 users at the same time.
 
-Once there are multiple server to serve same thing, Load Balance must be considered
+Once there are multiple servers serving the same thing, load balancing needs to be considered, as we need a service to route requests to different servers.
 
-> In computing, load balancing refers to the process of distributing 
-> a set of tasks over a set of resources (computing units), with the aim 
-> of making their overall processing more efficient. 
+> In computing, load balancing refers to the process of distributing
+> a set of tasks across a set of resources (computing units) in order to
+> of making their overall processing more efficient.
 
 ## Availability
 
-As a services(content) provider, I want my website (in other word, the server) 
-online and provide content 7 * 24 hours, and that is high availability.
+As a service (content) provider, I want my website (in other words, the server) to be online and provide content 7/24, and that is high availability.
 
-In case of Database, if a instance is down, all read/write operation will 
-redirect to other instance.
+In the case of the database, if one instance goes down, all read/write operations are redirected to another instance.
 
 ## Deploy MongoDB
 
 ### Standalone instance
 
-Installing MongoDB is easy, following the official MongoDB manual from [here](https://docs.mongodb.com/manual/installation/)
+Installing MongoDB is easy, follow the official MongoDB manual from [here] (https://docs.mongodb.com/manual/installation/)
 
-After install, there are two way to start the MongoDB services.
+After installation, run these commands to start the MongoDB service
 
-Using `systemctl` for Linux system (you can't use this command if you're using Windows)
-```bash
-sudo systemctl start mongod
-```
-
-Calling mongod directly
 ```bash
 sudo mkdir -p /srv/mongodb/db
 sudo mongod --port 27017 --bind_ip localhost,0.0.0.0 --dbpath /srv/mongodb/db --oplogSize 128
 ```
 
-
 ### Replica Set
 
-> A replica set in MongoDB is a group of mongod processes that maintain 
-> the same data set. Replica sets provide redundancy and high availability
+> A replica set in MongoDB is a group of mongod processes that maintain the same
+> the same dataset. Replica Sets Provide Redundancy and High Availability
 
-In a Replica Set, there is a primary instance, and the rest of instances 
-are secondary. all secondary instances are not writable by the client. 
-transaction made from client to the primary instance, will automatic sync to all secondary instances. 
+In a replica set, there is one primary instance, and all other instances are secondary.
+All secondary instances are not writable by the client.
+Transactions from the client to the primary instance are automatically synchronised to all secondary instances.
 
-> A secondary can become a primary. If the current primary becomes unavailable, 
-> the replica set holds an election to choose which of the secondaries becomes the new primary.
+> A secondary can become a primary. If the current Primary becomes unavailable,
+> The replica set holds an election to choose which of the secondaries will become the new primary.
 
 ![](https://docs.mongodb.com/manual/images/replica-set-read-write-operations-primary.bakedsvg.svg)
 
@@ -85,42 +73,42 @@ sudo mongod --replSet rs0 --port 27018 --bind_ip localhost --dbpath /srv/mongodb
 sudo mongod --replSet rs0 --port 27019 --bind_ip localhost --dbpath /srv/mongodb/rs0-2 --oplogSize 128
 ```
 
-Execute commands above will create three MongoDB instances and using ports 27017, 27018, 27019 respectively.
-and those three instances are assigned to a replica set `rs0` (you may set the name to anything you want).
+Running the commands above will create three MongoDB instances and use ports 27017, 27018, 27019 respectively. and these three instances will be assigned to a replica set `rs0` (you can set the name to anything you want).
 
-By adding `--fork --logpath /var/log/mongod.log` on each `mongod` command if you want to run those three 
-instances on the same machine (only in test environment), or opening three session and run commands separately.
+If you want to run these instances on the same machine for testing purposes, you need to add `--fork` to each command, or open three sessions and run the commands separately.
 
-Using `mongsh` to connect one of the instances (i.e. 27017), and run the command to add rest of instances to the replica set.
+Use `mongsh` to connect one of the instances (i.e. 27017) and run the command to add the rest of the instances to the replica set.
+
 ```bash
-$ rs.initiate()
+rs.initiate()
 $ rs.add("ip:27018")
 $ rs.add("ip:27019")
 ```
 
-Now, whatever you insert, update or delete to the primary instance (:27017), it also been done to the rest two instances.
+Now, whatever you add, update or delete in the primary instance (:27017), it has also been done in the other two instances.
 
 ### Sharding
-Since *Replica Set* is used to provide high availability to reduce the downtime. 
-Sharding is solving to many requests at same time to one database instance. *limitation of I/O speed*
 
-> Sharding is a method for distributing data across multiple machines.
-> MongoDB uses sharding to support deployments with very large data
-> sets and high throughput operations.
+Because *Replica Set* is used to provide high availability to reduce downtime.
+Sharding is solving too many requests to a database instance at the same time. ***Limitation of the I/O speed***
+
+> Sharding is a method of distributing data across multiple machines.
+MongoDB uses sharding to support deployments with very large > data sets and high throughput operations.
+> and high throughput operations.
 
 ![](https://docs.mongodb.com/manual/images/sharded-cluster-production-architecture.bakedsvg.svg)
 
-Starting a config server is similar to replica set but with `--configsvr`, (config server must be a replica set)
+Starting a config server is similar to a replica set, but with `--configsvr', (config server must be a replica set)
 ```bash
 sudo mongod --configsvr --replSet conf --port 27020 --bind_ip localhost --dbpath /srv/mongodb/conf-0 --oplogSize 128
 ```
 
-Those replica set used in sharding must run with `--shardsvr`
+The replica set used in sharding must be run with `--shardsvr'.
 ```bash
 sudo mongod -shardsvr --replSet rs0 --port 27017 --bind_ip localhost --dbpath /srv/mongodb/rs0-0 --oplogSize 128
 ```
 
-After the config server start, add 2 or more replica set to the config server.
+After starting the config server, add 2 or more replica sets to the config server.
 
 ```bash
 mongosh ip:27020
@@ -129,16 +117,14 @@ sh.addShard( "rs1/ip:27017,ip:27018,ip:27019" )
 sh.addShard( "rs2/ip:27017,ip:27018,ip:27019" )
 ```
 
-And then using `enableSharding` to set which database for sharding, 
-then determined which key of the collection as *Shard Key*
+And then use `enableSharding` to determine which database to shard, then specify which key of the collection to use as the *shard key*.
 
 ```bash
 sh.enableSharding("test")
 sh.shardCollection("database.collection", { uid : "hashed" } )
 ```
 
-Now connect to the config server just like connecting to a single MongoDB instance,
-Each document will insert to different replica set based the hashed shared key `uid`
+Now connect to the config server as if you were connecting to a single MongoDB instance, Each document will be inserted into a different replica set based on the hashed shared key `uid`.
 
 ---
 
