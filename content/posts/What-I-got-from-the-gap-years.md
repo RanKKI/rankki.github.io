@@ -6,9 +6,9 @@ tags:
 categories:
 ---
 
-I returned to China and arrived in Wuhan in 2020, just a week prior to the start of the lockdown. I never imagined that it would last for a duration of three years.
+I returned to China and arrived in Wuhan in 2020, just a week prior to the start of the lockdown. I never imagined that it would last for three years.
 
-In March 2020, I began the first semester of my second year at Monash University and was enrolled in online classes conducted through Zoom. However, after only two weeks, I realised that this mode of learning was not effective and decided to take a break from my studies.
+In March 2020, I began the first semester of my 2nd year at Monash University and was enrolled in online classes conducted through Zoom. However, after only two weeks, I realised that online study was not effective and decided to take a break from my studies.
 
 I initially took an internship at ShareIt, but it turned out to be a disappointing experience as I was mainly tasked with menial and unfulfilling work. My second internship also proved to be less than ideal, as I expected to be working on backend development based on the job description, but was instead assigned to write automated scripts for testing mobile games.
 
