@@ -4,6 +4,7 @@ date: 2023-01-24T11:15:31+08:00
 draft: false
 tags:
 categories:
+lang: en
 ---
 
 I returned to China and arrived in Wuhan in 2020, just a week prior to the start of the lockdown. I never imagined that it would last for three years.

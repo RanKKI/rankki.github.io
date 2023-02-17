@@ -5,6 +5,7 @@ draft: false
 tags:
  - Docker
 categories:
+lang: en
 ---
 
 We want users to be able to continue using the service during the upgrade process, the first thing we have to do is kill the process when we want to upgrade a running application, and then restart it.
