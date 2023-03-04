@@ -58,5 +58,8 @@ OS 是通过每个盘独立、唯一的 UUID 标识符加载的。因为系统�
 
 重启，就能顺利的进入系统了。
 
+# 丢引导
+
+引导出错，可以在 Live CD 中进行恢复，参考 [How to chroot Ubuntu using Live CD to fix GRUB rescue prompt](https://web.archive.org/web/20190630193946/http://karuppuswamy.com/wordpress/2010/06/02/how-to-chroot-to-ubuntu-using-live-cd-to-fix-grub-rescue-prompt/)
 
 [^1]: [2020最新攻略：免刷BIOS 老电脑用NVMe固态盘装系统！](https://www.jianshu.com/p/5ee140b47642)
