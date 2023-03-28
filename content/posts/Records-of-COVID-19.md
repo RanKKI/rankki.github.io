@@ -25,6 +25,14 @@ categories:
 
 - [那么多国家都放弃了，为什么中国还要坚持疫情“清零”？ ](https://www.sohu.com/a/499895647_516458)
 
+## 2022 年 03 月
+
+- [上海为什么不封城？](https://new.qq.com/rain/a/20220327A06X2Q00)
+- [感染者数据还在上升，上海为什么不能“封城”？官方回应](https://finance.sina.com.cn/jjxw/2022-03-27/doc-imcwiwss8339610.shtml)
+- [上海全域での外出制限始まる 貨物便の欠航など物流に影響も](https://www3.nhk.or.jp/news/html/20220329/k10013557401000.html)
+- [今晨5时起，上海浦东封控！开展核酸筛查](https://www.chinapeace.gov.cn/chinapeace/c100007/2022-03/28/content_12610468.shtml)
+- [上海分两批封城 浦东市民连夜抢物资](https://www.epochtimes.com/gb/22/3/27/n13676849.htm)
+
 ## 2022 年 04 月
 
 - [“动态清零”是我国当前抗击疫情的最佳选择（人民论坛）](http://opinion.people.com.cn/n1/2022/0413/c1003-32397514.html)
@@ -38,7 +46,7 @@ categories:
 - [上海：即日起来沪返沪人员需“三天三检”，未完成将被赋黄码](https://archive.is/Vd9ko)
 - [中国释放二十大后继续坚持“清零”防疫信号](https://www.bbc.com/zhongwen/simp/chinese-news-63230995)
 
-## 200 年 11 月
+## 2022 年 11 月
 
 - [兰州煤气中毒身亡男童：疫情三年 便是他的一生](https://archive.is/3tnop)
 - [坚决打赢常态化疫情防控攻坚战——近期抗击新冠疫情扫描](https://news.cctv.com/2022/11/29/ARTI1TaEExF9z9elPrak8Gwx221129.shtml)
