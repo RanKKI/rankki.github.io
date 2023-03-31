@@ -65,3 +65,6 @@ categories:
 - [他们曾新冠阳性：有人嗅觉短暂消失，有人一直咳嗽，有人很快康复｜钛媒体影像《在线》](https://www.tmtpost.com/6339532.html)
 - [重大转变！广州官方正式确认：新冠毒力还不如流感严重！](https://view.inews.qq.com/qr/20221204A05GKG00)
 - [上海市进一步优化调整疫情防控措施：抵沪不满5天者不再限制其进入相关公共场所](https://baijiahao.baidu.com/s?id=1751553171605714147&wfr=spider&for=pc)
+
+## 2023 年 03 月
+ - [创造人类文明史上人口大国成功走出疫情大流行的奇迹（人民要论）](https://archive.is/YnL8u)[[网易](https://archive.is/rAirU)]
