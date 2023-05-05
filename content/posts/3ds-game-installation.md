@@ -28,10 +28,6 @@ python3 custominstall.py -b boot9.bin -m movable.sed --sd /path/to/sd file.cia f
 但问题来了，3DS 支持多种文件格式，但 `custominstall.py` 只能安装 `cia` 文件，因此可以用 `3dsconv`[^2] 将 `cci` 转成 `cia`，然后再使用 `custominstall.py` 安装到 SD 卡。
 
 
-## 原理
-
-//TODO
-
 [^1]: [custom-install](https://github.com/ihaveamac/custom-install)
 [^2]: [3dsconv](https://github.com/ihaveamac/3dsconv)
 [^3]: [3ds.hacks](https://3ds.hacks.guide)

@@ -4,7 +4,7 @@ date: 2021-09-10T11:56:35+08:00
 draft: false
 tags:
  - Cocos Creator
-categories: 
+categories:
  - 技术
 ---
 
@@ -85,6 +85,3 @@ function pathToUUID(bundleName: string, path: string, type: typeof cc.Asset): st
     return getFromBundle(bundleName)
 }
 ```
-
-# 源码分析
- > TODO...
