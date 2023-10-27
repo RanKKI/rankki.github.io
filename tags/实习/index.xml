@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>实习 on RanKKI's Blog</title><link>https://rankki.xyz/tags/%E5%AE%9E%E4%B9%A0/</link><description>Recent content in 实习 on RanKKI's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Tue, 05 Jul 2022 12:47:00 +0800</lastBuildDate><atom:link href="https://rankki.xyz/tags/%E5%AE%9E%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>年终实习 22/23</title><link>https://rankki.xyz/posts/intern-22-23/</link><pubDate>Tue, 05 Jul 2022 12:47:00 +0800</pubDate><guid>https://rankki.xyz/posts/intern-22-23/</guid><description>为什么要叫年终实习，毕竟澳洲是夏天，国内是冬天。叫暑期/寒假(?)实习啥的也不太合适
+最终拿到了上海特斯拉信息娱乐系统的 Offer
+Akuna 起因是在 V2ex 上看到一个 Akuna Sydney 工程师在直招程序，遂在帖子下问有没有 summer intern 的位置，答复是“有时有，但不能给工签证&amp;quot;，但因为我有学生签，所以联系了这位，帮忙内推了。
+岗位是 Full Stack Web Developer，JD 里说是 Python + React.js 的组合，会涉及到 K8S 等工具。
+6月12号，简历开始走流程 6月23号，收到笔试的邀请 6月27号，收到技术面的邀请 7月04号，技术面 7月05号，收到终面邀请 7月07号，终面 7月08号，收到拒信 笔试 一共五道题，两个小时。不涉及到很重的算法，如果平时英文环境做题比较多，很好解决。
+相对来讲，比较难的一道题，使用了 Dijkstra 最短路径算法。虽然我感觉用数学的方式应该也能做出来。
+最后一题为了避免超时，使用一个哈希表就能解决，美中不足的是，有三个测试用例没有过。完成笔试之后，去搜索了下，得出一个结论，题目条件不完整导致的。
+总体来说，10 分钟一道，最后一题用了一个多小时去 debug 那三个测试用例。
+技术面 题目是关于一个音符或者说钢琴的问题，一共45分钟，题目也不难，但前期读题有点累。 我一点音乐知识都没有，所以需要一点时间理解下题目想干啥。感觉也就是 LeetCode easy 的题目。
+面试体验很好，在和面试官说明不能太理解题目之后，小哥会从题库里拿一个 ascii 图用于理解题目。
+题目一共有 3 + 1 个，是递增的关系，最后的 +1 是 bonus，因为时间的原因我没做。
+第三题麻烦的一点是，需要用到 permutation 拿到所有排列组合，在这里花费了很久。后来发现不行，于是和面试官说，我知道怎么做，但我忘记怎么写算法了。面试官直接复制粘贴了 permutation 的函数出来，直接调用 python 的内置库 itertools&amp;hellip;..
+当时我懵了，直接问“原来我们可以直接使用内置库？？”，面试官说可以的&amp;hellip;.
+然后题目就做出来了，时间也差不多到了，面试官问了下哪里可以优化，就说有个地方可以从 O(n) 用哈希表优化到 O(1)，和让我写一下 permutation 的实现，可以用 Pseudocode，写完之后问我为啥刚才写的不行，然后解释了下。</description></item></channel></rss>
