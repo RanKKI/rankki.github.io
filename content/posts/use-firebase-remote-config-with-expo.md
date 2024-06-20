@@ -1,5 +1,5 @@
 ---
-title: "Use firebase remote config with expo"
+title: "Use Firebase remote config with Expo"
 date: 2024-06-20T13:15:18+11:00
 draft: false
 tags:
