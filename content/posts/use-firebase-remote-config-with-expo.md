@@ -11,7 +11,11 @@ lang: en
 
 [Firebase JS SDK](https://docs.expo.dev/guides/using-firebase/#using-firebase-js-sdk) does not support Remote Config by default[^1]. The only way to use it is to eject from Expo and use a bare project with [React Native Firebase](https://rnfirebase.io/).
 
-Refactoring the current project to use a different approach is challenging, so we prefer to stay with Expo. To use Firebase Remote Config, we can follow the [instructions](https://firebase.google.com/docs/remote-config/get-started?platform=web), but this leads to the first problem:
+Refactoring the current project to use a different approach is challenging, so we prefer to stay with Expo. 
+
+---
+
+To use Firebase Remote Config, we can follow the [instructions](https://firebase.google.com/docs/remote-config/get-started?platform=web), but this leads to the first problem:
 
 ```
 firebaseerror: remote config: indexed db is not supported by current browser (remoteconfig/indexed-db-unavailable).
