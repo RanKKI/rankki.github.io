@@ -52,10 +52,10 @@ paginate = 15
   url = "/about"
   weight = 2
 
-[[menu.main]]
-  name = "Bangumi"
-  url = "/bangumi"
-  weight = 3
+# [[menu.main]]
+#   name = "Bangumi"
+#   url = "/bangumi"
+#   weight = 3
 
 [[menu.main]]
   name = "Tags"
