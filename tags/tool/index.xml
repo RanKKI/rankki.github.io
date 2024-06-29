@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tool on RanKKI's Blog</title><link>https://rankki.xyz/tags/tool/</link><description>Recent content in Tool on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Tue, 11 Oct 2022 16:23:39 +0800</lastBuildDate><atom:link href="https://rankki.xyz/tags/tool/index.xml" rel="self" type="application/rss+xml"/><item><title>Monash Uni 课程</title><link>https://rankki.xyz/posts/monash-uni-units-search/</link><pubDate>Sun, 23 Dec 2018 10:44:29 +0000</pubDate><guid>https://rankki.xyz/posts/monash-uni-units-search/</guid><description>原来写过一个爬虫，爬Monash 2019 Handbook里课程的信息，比如有没有需要前置课程，有没有考试，有没有和其他课冲突。
+后来就完善了一下代码，并且将起整理出来，同时也写了个小前端，
+本来是用 python + flask 写的，但后来发现并没有什么需要后端操作的，
+于是就把数据用 json 格式储存在 github 上，并且用Vue.js写了个前端，用于搜索，同时不需要独立服务器。
+CSS 框架用的是MDUI, HTTP 请求部分用的是Axios, CDN 用的是Showfom家的。
+代码的位置是在github/rankki/moansh这里，然后使用的地址是在这个域名下rankki.xyz/monash
+信息包括了课的代码，名字，faculty，exam 和平时的其他 assessment 成绩，以及哪个学期有课，
+然后，因为是写的代码爬的数据，有可能会有信息不对， 如果有发现不对的，可以在 Telegram 联系到我。
+没想到，4 年后，2022-10-11，我竟然因为要选课对这个项目进行了更新。（我怎么还没毕业
+看了下 4 年前的代码，真的稚嫩，还有这篇内容里有好多排版问题。</description></item></channel></rss>

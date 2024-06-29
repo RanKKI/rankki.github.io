@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Samba on RanKKI's Blog</title><link>https://rankki.xyz/tags/samba/</link><description>Recent content in Samba on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Sat, 18 Sep 2021 18:42:24 +0800</lastBuildDate><atom:link href="https://rankki.xyz/tags/samba/index.xml" rel="self" type="application/rss+xml"/><item><title>Samba - 对没有权限的用户隐藏文件 (夹)</title><link>https://rankki.xyz/posts/hide-share-folder-for-unauthorised-users/</link><pubDate>Sun, 05 May 2019 12:25:27 +0000</pubDate><guid>https://rankki.xyz/posts/hide-share-folder-for-unauthorised-users/</guid><description>最近在搞 OpenMediaVault，然后在设置每个用户的访问权限，
+但是发现就算用户没有某个文件夹的访问权限， 用户通过 Finder(macOS) 访问的时候，还是会显示这个文件夹，然后过一会，Finder 会提示找不到这个文件夹。
+这样就很破坏用户体验，
+于是在 DuckDuckGo 了一会，找到了 Hiding samba share from browse list for unauthorised users 这个 post
+只要在smb.conf里的[Global]添加一行 access based share enum = yes 就可以了
+在 OMV 里面的话，在 SMB/CIFS 设置的， 有一个 Extra options，在这里把access based share enum = yes加进去，然后 save， apply changes，
+就可以实现对没有权限的用户隐藏掉文件夹，</description></item></channel></rss>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>H61 on RanKKI's Blog</title><link>https://rankki.xyz/tags/h61/</link><description>Recent content in H61 on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Sat, 04 Mar 2023 16:02:19 +1100</lastBuildDate><atom:link href="https://rankki.xyz/tags/h61/index.xml" rel="self" type="application/rss+xml"/><item><title>在旧芯片组使用 NVMe SSD 安装 Ubuntu</title><link>https://rankki.xyz/posts/install-ubuntu-with-nvme-on-old-chipset-motherboard/</link><pubDate>Sat, 04 Mar 2023 10:19:00 +1100</pubDate><guid>https://rankki.xyz/posts/install-ubuntu-with-nvme-on-old-chipset-motherboard/</guid><description>前情提要 手上有一个 H61 芯片组的主板的 NAS， 4 个 SATA 口和硬盘位。毕竟主板那么旧了，也没有 M.2 接口。最一开始是把 OS 安装到了 U 盘上，后来搬家，U 盘丢了，就说顺手升级一下系统盘。
+于是乎，买了 PCI-E 转 M.2 接口的 adapter 和一块 NVMe M.2 的 WD SN570.
+普通安装 直接做了个 Ubuntu Server 的安装盘，并直接在 NAS 上进行安装，发现找不到盘。于是，将 NVMe SSD 拆到 PC 上进行安装，同时将引导安装到 SSD 上。
+当还是启动不来，一番搜索得出1
+可能是主板太老，BIOS 没有对 NVMe 盘的支持。但可以通过 Clovers 这种引导启动
+安装 Clovers 使用这种方法的坏处就是，你需要一个 U 盘做启动盘，但系统还在 SSD 上， 相比于 U 盘做系统盘，速度好了很多。
+但刷完引导发现引导里并没有 Ubuntu Server。
+盘没有读取成功 进入到安装盘带的 Shell 里，运行 fdisk --list 和 lshw 发现根本找不到 NVMe 的设备。</description></item></channel></rss>

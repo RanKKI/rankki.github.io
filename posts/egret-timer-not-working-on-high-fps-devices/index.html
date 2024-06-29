@@ -1,0 +1,83 @@
+<!doctype html><html lang=zh-cn><head><link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决 | RanKKI's Blog</title>
+<link rel=canonical href=https://rankki.xyz/posts/egret-timer-not-working-on-high-fps-devices/><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="all,follow"><meta name=googlebot content="index,follow,snippet,archive"><meta property="og:url" content="https://rankki.xyz/posts/egret-timer-not-working-on-high-fps-devices/"><meta property="og:site_name" content="RanKKI's Blog"><meta property="og:title" content="白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决"><meta property="og:description" content="目前实习在的项目组的产品，经常有玩家反馈某个地方倒计时会变快，内部也有小伙伴发现了这个问题，在 iPad Pro 上更是达到了 2 倍速， 但因为受影响的用户很少很少，一直没修。上周，因为日程上不是很忙，便找了一天去修复这个 bug。"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-12-05T21:14:46+08:00"><meta property="article:modified_time" content="2021-09-18T18:42:24+08:00"><meta property="article:tag" content="Egret"><meta property="article:tag" content="WeChat"><meta name=twitter:card content="summary"><meta name=twitter:title content="白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决"><meta name=twitter:description content="目前实习在的项目组的产品，经常有玩家反馈某个地方倒计时会变快，内部也有小伙伴发现了这个问题，在 iPad Pro 上更是达到了 2 倍速， 但因为受影响的用户很少很少，一直没修。上周，因为日程上不是很忙，便找了一天去修复这个 bug。"><link rel=stylesheet href=https://rankki.xyz/css/styles.703587cbc83e3d6c4abb083f3126cd73c5c67af0782c70bbc9e4643c1d171ec879a51fed1fd12cf82e0469fc4c2454f83d63696957494d2268aa2cc691a4ef06.css><link rel=stylesheet href=https://rankki.xyz/css/syntax.css><link rel=stylesheet href=https://rankki.xyz/css/loading.css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=icon type=image/png href=https://rankki.xyz/images/favicon.ico></head><body class="max-width mx-auto px3 ltr"><div class="content index py4"><header id=header><a href=https://rankki.xyz/><div id=title><h1>RanKKI's Blog</h1></div></a><div id=nav><ul><li class=icon><a href=# aria-label=Menu><i class="fas fa-bars fa-2x" aria-hidden=true></i></a></li><li><a href=/>Home</a></li><li><a href=/about>About</a></li><li><a href=/tags>Tags</a></li></ul></div></header><div id=header-post><span id=menu><div id=toc><nav id=TableOfContents><ul><li><a href=#分析>分析</a></li></ul></nav></div></span></div><article class=post itemscope itemtype=http://schema.org/BlogPosting><header><h1 class=posttitle itemprop="name headline">白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决</h1><div class=meta><div class=postdate><time datetime="2020-12-05 21:14:46 +0800 CST" itemprop=datePublished>2020-12-05</time>
+(Updated: <time datetime="2021-09-18 18:42:24 +0800 CST" itemprop=dateModified>2021-09-18</time>)</div><div class=article-read-time><i class="far fa-clock"></i>
+4 minute read</div><div class=article-tag><i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/egret rel=tag>Egret</a>
+,
+<a class=tag-link href=/tags/wechat rel=tag>WeChat</a></div></div></header><div class=content itemprop=articleBody><p>目前实习在的项目组的产品，经常有玩家反馈某个地方倒计时会变快，内部也有小伙伴发现了这个问题，在 iPad Pro 上更是达到了 2 倍速， 但因为受影响的用户很少很少，一直没修。上周，因为日程上不是很忙，便找了一天去修复这个 bug。</p><p>经过测试， web 端不会出现这个情况，但微信小游戏上会有速度变快。</p><p>首先是在白鹭的开发者论坛上，找了个一篇帖子<a href=https://bbs.egret.com/thread-27732-1-1.html>基于系统时间的计时器 DateTimer(不受 FPS 影响)</a>看了下代码， 没有问题， 根据时间戳计算差值，然后再 dispatch 事件。 便直接放进项目里尝试，确实解决了倒计时变快的问题，但这很怪异，白鹭不应该会有这么奇怪的 bug，然后我的 Leader 拉了个群， 其中包括引擎组和隔壁项目组的大佬们，讨论这个问题。</p><p>其中一位指出，白鹭也是这么做的，通过查看源码，确实是的， 但在注释里标记了，最高支持到 60 FPS，而 iPad Pro 是 120 FPS 的设备，因此导致了 1000ms Delay 的 Timer，会在 1 秒内触发两次，而我们的倒计时并没有计算时间的差值，而是直接 <code>timer--</code> 所以导致速度异常。</p><p>而 Web 端没有问题是因为项目有限制 FPS 到 60， 但这个限制对微信小游戏不好使，解决方法是手动使用 <code>wx.setPreferredFramesPerSecond(fps)</code>，限制 FPS 到 60。</p><h2 id=分析>分析</h2><p>ergret-core/src/egret/utils/Timer.ts <a href=https://github.com/egret-labs/egret-core/blob/0ffe47cb869e0b4b562f3b20b6f4bfd9ddfdd86a/src/egret/utils/Timer.ts>source</a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=kr>public</span> <span class=kr>set</span> <span class=nx>delay</span><span class=p>(</span><span class=nx>value</span>: <span class=kt>number</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>value</span> <span class=o>&lt;</span> <span class=mi>1</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>value</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>_delay</span> <span class=o>==</span> <span class=nx>value</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>_delay</span> <span class=o>=</span> <span class=nx>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>lastCount</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>updateInterval</span> <span class=o>=</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>round</span><span class=p>(</span><span class=mi>60</span> <span class=o>*</span> <span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>247
+</span><span class=lnt>248
+</span><span class=lnt>249
+</span><span class=lnt>250
+</span><span class=lnt>251
+</span><span class=lnt>252
+</span><span class=lnt>253
+</span><span class=lnt>254
+</span><span class=lnt>255
+</span><span class=lnt>256
+</span><span class=lnt>257
+</span><span class=lnt>258
+</span><span class=lnt>259
+</span><span class=lnt>260
+</span><span class=lnt>261
+</span><span class=lnt>262
+</span><span class=lnt>263
+</span><span class=lnt>264
+</span><span class=lnt>265
+</span><span class=lnt>266
+</span><span class=lnt>267
+</span><span class=lnt>268
+</span><span class=lnt>269
+</span><span class=lnt>270
+</span><span class=lnt>271
+</span><span class=lnt>272
+</span><span class=lnt>273
+</span><span class=lnt>274
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm>* @private
+</span></span></span><span class=line><span class=cl><span class=cm>* Ticker 以 60FPS 频率刷新此方法
+</span></span></span><span class=line><span class=cl><span class=cm>*/</span>
+</span></span><span class=line><span class=cl><span class=nx>$update</span><span class=p>(</span><span class=nx>timeStamp</span>: <span class=kt>number</span><span class=p>)</span><span class=o>:</span> <span class=kr>boolean</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>deltaTime</span> <span class=o>=</span> <span class=nx>timeStamp</span> <span class=o>-</span> <span class=k>this</span><span class=p>.</span><span class=nx>lastTimeStamp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>deltaTime</span> <span class=o>&gt;=</span> <span class=k>this</span><span class=p>.</span><span class=nx>_delay</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=p>.</span><span class=nx>lastCount</span> <span class=o>=</span> <span class=k>this</span><span class=p>.</span><span class=nx>updateInterval</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=p>.</span><span class=nx>lastCount</span> <span class=o>-=</span> <span class=mi>1000</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>lastCount</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=p>.</span><span class=nx>lastCount</span> <span class=o>+=</span> <span class=k>this</span><span class=p>.</span><span class=nx>updateInterval</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>lastTimeStamp</span> <span class=o>=</span> <span class=nx>timeStamp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>_currentCount</span><span class=o>++</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>let</span> <span class=nx>complete</span> <span class=o>=</span> <span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>repeatCount</span> <span class=o>&gt;</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=k>this</span><span class=p>.</span><span class=nx>_currentCount</span> <span class=o>&gt;=</span> <span class=k>this</span><span class=p>.</span><span class=nx>repeatCount</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>repeatCount</span> <span class=o>==</span> <span class=mi>0</span> <span class=o>||</span> <span class=k>this</span><span class=p>.</span><span class=nx>_currentCount</span> <span class=o>&lt;=</span> <span class=k>this</span><span class=p>.</span><span class=nx>repeatCount</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>egret</span><span class=p>.</span><span class=nx>TimerEvent</span><span class=p>.</span><span class=nx>dispatchTimerEvent</span><span class=p>(</span><span class=k>this</span><span class=p>,</span> <span class=nx>egret</span><span class=p>.</span><span class=nx>TimerEvent</span><span class=p>.</span><span class=nx>TIMER</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>complete</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=p>.</span><span class=nx>stop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>TimerEvent</span><span class=p>.</span><span class=nx>dispatchTimerEvent</span><span class=p>(</span><span class=k>this</span><span class=p>,</span> <span class=nx>TimerEvent</span><span class=p>.</span><span class=nx>TIMER_COMPLETE</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>白鹭在设置 delay 的时候，会对 <code>updateInterval</code> 赋值 <code>60 * dealy</code>，然后 <code>$update</code> 方法中，会对这个值做计算，然后调用事件， 但 <code>$update</code> 方法是以系统默认的刷新率刷新的。</p><p>比如在 60fps 设备上用 1/60s 调用 <code>$update</code>，而在 120fps 设备上是以 <code>1/120s</code> 调用，但 <code>updateInterval</code> 却还保持在 <code>60 * dealy</code>，因此导致在 120fps 设备上，设置的 dalay 从原本 1000ms，变成了 500ms，也就导致了 1s 内发了两次事件</p></div></article><footer id=footer><div class=footer-left>Copyright &copy; 2024 Hugh(Hui) Liu</div><script src=https://code.iconify.design/2/2.0.4/iconify.min.js></script><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "7f02cdd7074d4e1f8125c11651f47699"}'></script></footer></div></body><link rel=stylesheet href=/lib/font-awesome/css/all.min.css><script src=/lib/jquery/jquery.min.js></script><script src=/js/main.js></script></html>

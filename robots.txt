@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /about/
+Allow: /posts/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /thoughts/
+
+Sitemap: https://rankki.xyz/sitemap.xml

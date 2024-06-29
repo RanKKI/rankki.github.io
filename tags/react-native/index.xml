@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React Native on RanKKI's Blog</title><link>https://rankki.xyz/tags/react-native/</link><description>Recent content in React Native on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Mon, 26 Jun 2023 21:12:22 +1000</lastBuildDate><atom:link href="https://rankki.xyz/tags/react-native/index.xml" rel="self" type="application/rss+xml"/><item><title>React Native 全局 JS 代码</title><link>https://rankki.xyz/posts/global-js-in-react-native-or-expo/</link><pubDate>Mon, 26 Jun 2023 20:50:40 +1000</pubDate><guid>https://rankki.xyz/posts/global-js-in-react-native-or-expo/</guid><description>最近在写 RN 项目，使用了新的技术栈 Expo。
+Expo 是一个基于 React Native 的开发工具，可以让你更快的开发 React Native 应用，不需要配置 Android 和 iOS 的开发环境，只需要安装 Expo 的客户端就可以运行你的应用。
+在开发的过程中，遇到了一个很诡异的 Bug。在 Dev 环境（即使用 Expo Go 进行预览）下，项目运行正常，但是在打包成 ipa 之后，运行在真机上，就会出现 Crash，
+一开始通过看 TestFlight 日志，没发定位问题，报错栈只会到某一个 Invoke 方法下，再具体的内容就没有了。
+本以为是某种只在真机上才会出现的 Bug，但在使用 expo start --no-dev 进行本地预览时，也会出现 Crash。
+同样，没有报错栈，不知道为何发生。
+日志 通过使用 usb 线连电脑，使用 console.app 可以查到 iOS 设备上的日子。
+通过搜索+限定 process name 即可看到所有该 App 产生的日志。
+2021-06-26 20:50:40.000000+1000 &amp;lt;AppName&amp;gt;[&amp;lt;AppName&amp;gt;][fatal][tid:com.facebook.react.ExceptionsManagerQueue] Unhandled JS Exception: TypeError: undefined is not an object XXXXXXX_Provider YYYYYYY ZZZZZZZZ 定位问题 根据日志，能得出是某个 Provider 出现了问题，但不知道具体哪一行或者哪个方法，</description></item></channel></rss>

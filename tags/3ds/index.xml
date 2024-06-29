@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>3DS on RanKKI's Blog</title><link>https://rankki.xyz/tags/3ds/</link><description>Recent content in 3DS on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Fri, 05 May 2023 11:33:16 +1000</lastBuildDate><atom:link href="https://rankki.xyz/tags/3ds/index.xml" rel="self" type="application/rss+xml"/><item><title>3DS 游戏安装</title><link>https://rankki.xyz/posts/3ds-game-installation/</link><pubDate>Thu, 23 Mar 2023 18:26:10 +1100</pubDate><guid>https://rankki.xyz/posts/3ds-game-installation/</guid><description>收了台 New 3DS LL，成色十分新，价格也很便宜。到手第一件事就是「破解」，跟着文档1，大概半小时就完成了。
+在安装游戏的时候，发现内置的 FBI 安装速度在 2MB/s，小游戏还行。对于动辄就 2、3GB 的游戏，光安装就要 20+ 分钟。
+经过一番查找2，发现可以在电脑上直接安装到 SD卡 上。
+使用这种方法安装真的很快，基本上跑满了 SD 卡的速度，80+MB/s
+直接安装至 SD 卡 跟着教程3可以 dump 出 boot9.bin 和 movable.sed，然后直接调用 Python 脚本即可完成安装
+1 python3 custominstall.py -b boot9.bin -m movable.sed --sd /path/to/sd file.cia file2.cia CCI 文件 但问题来了，3DS 支持多种文件格式，但 custominstall.py 只能安装 cia 文件，因此可以用 3dsconv4 将 cci 转成 cia，然后再使用 custominstall.py 安装到 SD 卡。
+3ds.hacks&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+custom-install&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+Dump 文件&amp;#160;&amp;#x21a9;&amp;#xfe0e;
+3dsconv&amp;#160;&amp;#x21a9;&amp;#xfe0e;</description></item></channel></rss>

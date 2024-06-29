@@ -1,0 +1,193 @@
+<!doctype html><html lang=zh-cn><head><link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Python f-String | RanKKI's Blog</title>
+<link rel=canonical href=https://rankki.xyz/posts/python-f-string/><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="all,follow"><meta name=googlebot content="index,follow,snippet,archive"><meta property="og:url" content="https://rankki.xyz/posts/python-f-string/"><meta property="og:site_name" content="RanKKI's Blog"><meta property="og:title" content="Python f-String"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-07-09T12:41:09+00:00"><meta property="article:modified_time" content="2021-09-18T18:42:24+08:00"><meta property="article:tag" content="Python"><meta name=twitter:card content="summary"><meta name=twitter:title content="Python f-String"><link rel=stylesheet href=https://rankki.xyz/css/styles.703587cbc83e3d6c4abb083f3126cd73c5c67af0782c70bbc9e4643c1d171ec879a51fed1fd12cf82e0469fc4c2454f83d63696957494d2268aa2cc691a4ef06.css><link rel=stylesheet href=https://rankki.xyz/css/syntax.css><link rel=stylesheet href=https://rankki.xyz/css/loading.css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=icon type=image/png href=https://rankki.xyz/images/favicon.ico></head><body class="max-width mx-auto px3 ltr"><div class="content index py4"><header id=header><a href=https://rankki.xyz/><div id=title><h1>RanKKI's Blog</h1></div></a><div id=nav><ul><li class=icon><a href=# aria-label=Menu><i class="fas fa-bars fa-2x" aria-hidden=true></i></a></li><li><a href=/>Home</a></li><li><a href=/about>About</a></li><li><a href=/tags>Tags</a></li></ul></div></header><div id=header-post><span id=menu><div id=toc><nav id=TableOfContents><ul><li><ul><li><a href=#使用方法>使用方法</a></li></ul></li></ul></nav></div></span></div><article class=post itemscope itemtype=http://schema.org/BlogPosting><header><h1 class=posttitle itemprop="name headline">Python f-String</h1><div class=meta><div class=postdate><time datetime="2018-07-09 12:41:09 +0000 UTC" itemprop=datePublished>2018-07-09</time>
+(Updated: <time datetime="2021-09-18 18:42:24 +0800 CST" itemprop=dateModified>2021-09-18</time>)</div><div class=article-read-time><i class="far fa-clock"></i>
+3 minute read</div><div class=article-tag><i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/python rel=tag>Python</a></div></div></header><div class=content itemprop=articleBody><blockquote><p><a href=https://zhuanlan.zhihu.com/p/39128162>原文，知乎 - 刘哈哈</a></p></blockquote><h3 id=使用方法>使用方法</h3><h4 id=字符串>字符串</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;Python&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>age</span> <span class=o>=</span> <span class=mi>18</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;hi, </span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s2>, are you </span><span class=si>{</span><span class=n>age</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;hi, Python, are you 18&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>F</span><span class=s2>&#34;hi, </span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s2>, are you </span><span class=si>{</span><span class=n>age</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;hi, Python, are you 18&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=运算>运算</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span> <span class=mi>2</span> <span class=o>*</span> <span class=mi>3</span> <span class=o>+</span> <span class=mi>1</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;7&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=函数>函数</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=k>def</span> <span class=nf>test</span><span class=p>(</span><span class=nb>input</span><span class=p>):</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=k>return</span> <span class=nb>input</span><span class=o>.</span><span class=n>lower</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>name</span> <span class=o>=</span> <span class=s2>&#34;Python&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=n>test</span><span class=p>(</span><span class=n>name</span><span class=p>)</span><span class=si>}</span><span class=s2> is handsome.&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;python is handsome.&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=n>name</span><span class=o>.</span><span class=n>lower</span><span class=p>()</span><span class=si>}</span><span class=s2> is handsome.&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;python is handsome.&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=在类中使用>在类中使用</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=k>class</span> <span class=nc>Person</span><span class=p>:</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span><span class=n>name</span><span class=p>,</span><span class=n>age</span><span class=p>):</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>         <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>         <span class=bp>self</span><span class=o>.</span><span class=n>age</span> <span class=o>=</span> <span class=n>age</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=k>def</span> <span class=fm>__str__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>         <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=si>}</span><span class=s2> is </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>age</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=k>def</span> <span class=fm>__repr__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>         <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>name</span><span class=si>}</span><span class=s2> is </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>age</span><span class=si>}</span><span class=s2>. HAHA!&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>Python</span> <span class=o>=</span> <span class=n>Person</span><span class=p>(</span><span class=s2>&#34;Python&#34;</span><span class=p>,</span><span class=mi>18</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=n>Python</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python is 18&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=n>Python</span><span class=si>!r}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python is 18. HAHA!&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>Python</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>Python</span> <span class=ow>is</span> <span class=mi>18</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>Python</span>
+</span></span><span class=line><span class=cl><span class=n>Python</span> <span class=ow>is</span> <span class=mf>18.</span> <span class=n>HAHA</span><span class=err>!</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=多行>多行</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;Python&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>age</span> <span class=o>=</span> <span class=mi>18</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>message</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=sa>f</span><span class=s1>&#39;hi </span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s1>.&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=sa>f</span><span class=s1>&#39;you are </span><span class=si>{</span><span class=n>age</span><span class=si>}</span><span class=s1>.&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>message</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=s1>&#39;hi Python.you are 18.&#39;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这里需要注意，每行都要加上 f 前缀，否则格式化会不起作用：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>message</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=sa>f</span><span class=s1>&#39;hi </span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s1>.&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>     <span class=s1>&#39;you are learning </span><span class=si>{status}</span><span class=s1>.&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>message</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=s1>&#39;hi Python.you are learning </span><span class=si>{status}</span><span class=s1>.&#39;</span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=速度对比>速度对比</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>timeit</span> <span class=kn>import</span> <span class=n>timeit</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>timeit</span><span class=p>(</span><span class=s2>&#34;&#34;&#34;name = &#34;Python&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>age = 18
+</span></span></span><span class=line><span class=cl><span class=s2>&#39;</span><span class=si>%s</span><span class=s2> is </span><span class=si>%s</span><span class=s2>.&#39; % (name, age)&#34;&#34;&#34;</span><span class=p>,</span> <span class=n>number</span> <span class=o>=</span> <span class=mi>10000</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>timeit</span><span class=p>(</span><span class=s2>&#34;&#34;&#34;name = &#34;Python&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>age = 18
+</span></span></span><span class=line><span class=cl><span class=s2>&#39;</span><span class=si>{}</span><span class=s2> is </span><span class=si>{}</span><span class=s2>.&#39;.format(name, age)&#34;&#34;&#34;</span><span class=p>,</span> <span class=n>number</span> <span class=o>=</span> <span class=mi>10000</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>timeit</span><span class=p>(</span><span class=s2>&#34;&#34;&#34;name = &#34;Python&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>age = 18
+</span></span></span><span class=line><span class=cl><span class=s2>f&#39;</span><span class=si>{name}</span><span class=s2> is </span><span class=si>{age}</span><span class=s2>.&#39;&#34;&#34;&#34;</span><span class=p>,</span> <span class=n>number</span> <span class=o>=</span> <span class=mi>10000</span><span class=p>))</span>
+</span></span></code></pre></td></tr></table></div></div><p>结果</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Bash data-lang=Bash><span class=line><span class=cl>$ python fstring.py
+</span></span><span class=line><span class=cl>0.002238000015495345
+</span></span><span class=line><span class=cl>0.004068000009283423
+</span></span><span class=line><span class=cl>0.0015349999885074794
+</span></span></code></pre></td></tr></table></div></div><h4 id=注意事项>注意事项</h4><p>可以在字符串中使用各种引号，只要保证和外部的引号不重复即可。</p><p>以下使用方式都是没问题的：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=s1>&#39;Python&#39;</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s1>&#39;</span><span class=si>{</span><span class=s2>&#34;Python&#34;</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;&#34;&#34;Python&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s1>&#39;&#39;&#39;Python&#39;&#39;&#39;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><p>那如果字符串内部的引号和外部的引号相同时呢？那就需要 \ 进行转义：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;You are very </span><span class=se>\&#34;</span><span class=s2>handsome</span><span class=se>\&#34;</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;You are very &#34;handsome&#34;&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=括号的处理>括号的处理</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=se>{{</span><span class=s2>74</span><span class=se>}}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;</span><span class=si>{74}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=se>{{</span><span class=si>{</span><span class=mi>74</span><span class=si>}</span><span class=se>}}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;</span><span class=si>{74}</span><span class=s1>&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><p>可以看出，使用三个括号包裹效果一样。</p><h5 id=反斜杠>反斜杠</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;You are very </span><span class=se>\&#34;</span><span class=s2>handsome</span><span class=se>\&#34;</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;You are very &#34;handsome&#34;&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;</span><span class=si>{</span><span class=n>You</span> <span class=n>are</span> <span class=n>very</span> <span class=err>\</span><span class=s2>&#34;handsome</span><span class=se>\&#34;</span><span class=s2>}&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=n>File</span> <span class=s2>&#34;&lt;stdin&gt;&#34;</span><span class=p>,</span> <span class=n>line</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=ne>SyntaxError</span><span class=si>:</span><span class=s2> f-string expression part cannot include a backslash</span>
+</span></span></code></pre></td></tr></table></div></div><p>你可以先在变量里处理好待转义的字符，然后在表达式中引用变量：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;&#34;handsome&#34;&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s1>&#39;</span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;&#34;handsome&#34;&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h5 id=注释符号>注释符号</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;Python is handsome # really&#34;</span>
+</span></span><span class=line><span class=cl><span class=s1>&#39;Python is handsome # really&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;&gt;&gt;</span> <span class=sa>f</span><span class=s2>&#34;Python is handsome </span><span class=si>{</span><span class=err>#</span><span class=n>really</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=n>File</span> <span class=s2>&#34;&lt;stdin&gt;&#34;</span><span class=p>,</span> <span class=n>line</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=ne>SyntaxError</span><span class=p>:</span> <span class=n>f</span><span class=o>-</span><span class=n>string</span> <span class=n>expression</span> <span class=n>part</span> <span class=n>cannot</span> <span class=n>include</span> <span class=s1>&#39;#&#39;</span>
+</span></span></code></pre></td></tr></table></div></div></div></article><footer id=footer><div class=footer-left>Copyright &copy; 2024 Hugh(Hui) Liu</div><script src=https://code.iconify.design/2/2.0.4/iconify.min.js></script><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "7f02cdd7074d4e1f8125c11651f47699"}'></script></footer></div></body><link rel=stylesheet href=/lib/font-awesome/css/all.min.css><script src=/lib/jquery/jquery.min.js></script><script src=/js/main.js></script></html>

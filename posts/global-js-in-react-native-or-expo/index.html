@@ -1,0 +1,55 @@
+<!doctype html><html lang=zh-cn><head><link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>React Native 全局 JS 代码 | RanKKI's Blog</title>
+<link rel=canonical href=https://rankki.xyz/posts/global-js-in-react-native-or-expo/><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="all,follow"><meta name=googlebot content="index,follow,snippet,archive"><meta property="og:url" content="https://rankki.xyz/posts/global-js-in-react-native-or-expo/"><meta property="og:site_name" content="RanKKI's Blog"><meta property="og:title" content="React Native 全局 JS 代码"><meta property="og:description" content="最近在写 RN 项目，使用了新的技术栈 Expo。
+Expo 是一个基于 React Native 的开发工具，可以让你更快的开发 React Native 应用，不需要配置 Android 和 iOS 的开发环境，只需要安装 Expo 的客户端就可以运行你的应用。
+在开发的过程中，遇到了一个很诡异的 Bug。在 Dev 环境（即使用 Expo Go 进行预览）下，项目运行正常，但是在打包成 ipa 之后，运行在真机上，就会出现 Crash，
+一开始通过看 TestFlight 日志，没发定位问题，报错栈只会到某一个 Invoke 方法下，再具体的内容就没有了。
+本以为是某种只在真机上才会出现的 Bug，但在使用 expo start --no-dev 进行本地预览时，也会出现 Crash。
+同样，没有报错栈，不知道为何发生。
+日志 通过使用 usb 线连电脑，使用 console.app 可以查到 iOS 设备上的日子。
+通过搜索+限定 process name 即可看到所有该 App 产生的日志。
+2021-06-26 20:50:40.000000+1000 <AppName>[<AppName>][fatal][tid:com.facebook.react.ExceptionsManagerQueue] Unhandled JS Exception: TypeError: undefined is not an object XXXXXXX_Provider YYYYYYY ZZZZZZZZ 定位问题 根据日志，能得出是某个 Provider 出现了问题，但不知道具体哪一行或者哪个方法，"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-06-26T20:50:40+10:00"><meta property="article:modified_time" content="2023-06-26T21:12:22+10:00"><meta property="article:tag" content="React Native"><meta property="article:tag" content="Day.js"><meta name=twitter:card content="summary"><meta name=twitter:title content="React Native 全局 JS 代码"><meta name=twitter:description content="最近在写 RN 项目，使用了新的技术栈 Expo。
+Expo 是一个基于 React Native 的开发工具，可以让你更快的开发 React Native 应用，不需要配置 Android 和 iOS 的开发环境，只需要安装 Expo 的客户端就可以运行你的应用。
+在开发的过程中，遇到了一个很诡异的 Bug。在 Dev 环境（即使用 Expo Go 进行预览）下，项目运行正常，但是在打包成 ipa 之后，运行在真机上，就会出现 Crash，
+一开始通过看 TestFlight 日志，没发定位问题，报错栈只会到某一个 Invoke 方法下，再具体的内容就没有了。
+本以为是某种只在真机上才会出现的 Bug，但在使用 expo start --no-dev 进行本地预览时，也会出现 Crash。
+同样，没有报错栈，不知道为何发生。
+日志 通过使用 usb 线连电脑，使用 console.app 可以查到 iOS 设备上的日子。
+通过搜索+限定 process name 即可看到所有该 App 产生的日志。
+2021-06-26 20:50:40.000000+1000 <AppName>[<AppName>][fatal][tid:com.facebook.react.ExceptionsManagerQueue] Unhandled JS Exception: TypeError: undefined is not an object XXXXXXX_Provider YYYYYYY ZZZZZZZZ 定位问题 根据日志，能得出是某个 Provider 出现了问题，但不知道具体哪一行或者哪个方法，"><link rel=stylesheet href=https://rankki.xyz/css/styles.703587cbc83e3d6c4abb083f3126cd73c5c67af0782c70bbc9e4643c1d171ec879a51fed1fd12cf82e0469fc4c2454f83d63696957494d2268aa2cc691a4ef06.css><link rel=stylesheet href=https://rankki.xyz/css/syntax.css><link rel=stylesheet href=https://rankki.xyz/css/loading.css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=icon type=image/png href=https://rankki.xyz/images/favicon.ico></head><body class="max-width mx-auto px3 ltr"><div class="content index py4"><header id=header><a href=https://rankki.xyz/><div id=title><h1>RanKKI's Blog</h1></div></a><div id=nav><ul><li class=icon><a href=# aria-label=Menu><i class="fas fa-bars fa-2x" aria-hidden=true></i></a></li><li><a href=/>Home</a></li><li><a href=/about>About</a></li><li><a href=/tags>Tags</a></li></ul></div></header><div id=header-post><span id=menu><div id=toc><nav id=TableOfContents><ul><li><a href=#日志>日志</a></li><li><a href=#定位问题>定位问题</a></li><li><a href=#dayjs>Day.js</a></li><li><a href=#解决方法>解决方法</a></li><li><a href=#完>完</a></li></ul></nav></div></span></div><article class=post itemscope itemtype=http://schema.org/BlogPosting><header><h1 class=posttitle itemprop="name headline">React Native 全局 JS 代码</h1><div class=meta><div class=postdate><time datetime="2023-06-26 20:50:40 +1000 +1000" itemprop=datePublished>2023-06-26</time></div><div class=article-read-time><i class="far fa-clock"></i>
+3 minute read</div><div class=article-tag><i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/react-native rel=tag>React Native</a>
+,
+<a class=tag-link href=/tags/day.js rel=tag>Day.js</a></div></div></header><div class=content itemprop=articleBody><p>最近在写 RN 项目，使用了新的技术栈 Expo。</p><blockquote><p>Expo 是一个基于 React Native 的开发工具，可以让你更快的开发 React Native 应用，不需要配置 Android 和 iOS 的开发环境，只需要安装 Expo 的客户端就可以运行你的应用。</p></blockquote><p>在开发的过程中，遇到了一个很诡异的 Bug。在 Dev 环境（即使用 Expo Go 进行预览）下，项目运行正常，但是在打包成 ipa 之后，运行在真机上，就会出现 Crash，</p><p>一开始通过看 TestFlight 日志，没发定位问题，报错栈只会到某一个 Invoke 方法下，再具体的内容就没有了。</p><p>本以为是某种只在真机上才会出现的 Bug，但在使用 <code>expo start --no-dev</code> 进行本地预览时，也会出现 Crash。</p><p>同样，没有报错栈，不知道为何发生。</p><h2 id=日志>日志</h2><p>通过使用 usb 线连电脑，使用 console.app 可以查到 iOS 设备上的日子。</p><p>通过搜索+限定 <code>process name</code> 即可看到所有该 App 产生的日志。</p><pre tabindex=0><code class=language-log data-lang=log>2021-06-26 20:50:40.000000+1000 &lt;AppName&gt;[&lt;AppName&gt;][fatal][tid:com.facebook.react.ExceptionsManagerQueue] Unhandled JS Exception: TypeError: undefined is not an object
+
+XXXXXXX_Provider
+YYYYYYY
+ZZZZZZZZ
+</code></pre><h2 id=定位问题>定位问题</h2><p>根据日志，能得出是某个 Provider 出现了问题，但不知道具体哪一行或者哪个方法，</p><p>第一步做的是，注释掉全部内容，然后逐步取消注释，看看哪一行会导致 Crash。（虽然这个方法很笨，但是很好用。）</p><p>在找到问题函数后，通过打日志查具体是哪一行出现了问题。</p><p>我本以为是 firebase SDK 在真机上出现了问题，但是通过打日志，发现是 Day.js 出现了问题。</p><h2 id=dayjs>Day.js</h2><p>Firebase 或者 Firestore 使用的 Datetime，并不好计算，因此我会将其转成 Day.js 对象，保存回数据库的时候，再转回其特定格式</p><p>我是通过写一个 Day.js 的插件并定义类型，来实现这个功能的。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>declare</span> <span class=nx>module</span> <span class=s1>&#39;dayjs&#39;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>interface</span> <span class=nx>Dayjs</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>toFirebase</span><span class=p>()</span><span class=o>:</span> <span class=nx>Timestamp</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kd>function</span> <span class=nx>fromFirebase</span><span class=p>(</span><span class=nx>timestamp</span><span class=o>:</span> <span class=nx>Timestamp</span><span class=p>)</span><span class=o>:</span> <span class=nx>Dayjs</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>dayjsFactory</span><span class=p>.</span><span class=nx>fromFirebase</span> <span class=o>=</span> <span class=p>(</span><span class=nx>timestamp</span><span class=o>:</span> <span class=nx>Timestamp</span> <span class=o>|</span> <span class=kc>null</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>timestamp</span><span class=p>)</span> <span class=k>return</span> <span class=kc>null</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>dayjs</span><span class=p>(</span><span class=nx>timestamp</span><span class=p>.</span><span class=nx>toMillis</span><span class=p>())</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>dayjsClass</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>toFirebase</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>Timestamp</span><span class=p>.</span><span class=nx>fromMillis</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>valueOf</span><span class=p>())</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这些代码被保存到一个 <code>dayjs.ts</code> 文件，并没有被任何文件引用。</p><p>问题就出在这里，这个文件并没有被任何文件引用，因此在打包的时候，被忽略/删除掉，并没有被含在包内。</p><h2 id=解决方法>解决方法</h2><p>在 <code>index.js</code> 中手动 <code>import</code> 该文件</p><h2 id=完>完</h2><p>看起来是在 Dev 环境下，所有代码都会被打包，因此没有问题，但是在打包成 ipa 之后，会忽略未被引用的文件。</p></div></article><footer id=footer><div class=footer-left>Copyright &copy; 2024 Hugh(Hui) Liu</div><script src=https://code.iconify.design/2/2.0.4/iconify.min.js></script><script defer src=https://static.cloudflareinsights.com/beacon.min.js data-cf-beacon='{"token": "7f02cdd7074d4e1f8125c11651f47699"}'></script></footer></div></body><link rel=stylesheet href=/lib/font-awesome/css/all.min.css><script src=/lib/jquery/jquery.min.js></script><script src=/js/main.js></script></html>

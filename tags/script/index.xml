@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Script on RanKKI's Blog</title><link>https://rankki.xyz/tags/script/</link><description>Recent content in Script on RanKKI's Blog</description><generator>Hugo</generator><language>zh-cn</language><copyright>Hugh(Hui) Liu</copyright><lastBuildDate>Sat, 18 Sep 2021 18:42:24 +0800</lastBuildDate><atom:link href="https://rankki.xyz/tags/script/index.xml" rel="self" type="application/rss+xml"/><item><title>iTunes 中日英歌曲排序问题</title><link>https://rankki.xyz/posts/itunes-sorting-problem/</link><pubDate>Sun, 18 Oct 2020 14:20:02 +0000</pubDate><guid>https://rankki.xyz/posts/itunes-sorting-problem/</guid><description>因为个人原因， 我基本是下载歌曲并整理导入 iTunes，然后同步到各个设备上。 同时，我的设备语言是了英文，这就导致，所有英文歌曲按照 A-Z 排序，然后所有日文和中文歌曲在 # 的位置里。
+搜索了下相关问题，知道 iTunes 有一个标签， sorting name， 即 iTunes 可以按照这个变量进行排序，比如将中文转换成拼音，或者日文转成罗马音。 这样就可以正常排序了。
+解决方法是有了，但曲库都是以几百首、几千上万计算的， 不可能一个一个的去改。 作为程序员，要遵守
+宁愿写 1，2 个小时的脚本，也不愿意花半小时手动完成任务
+当然，写脚本是为了以后，新增歌曲的时候，可以自动化的完成编辑，可以省很多时间。
+macOS (从 10.5 开始）提供了接口，叫做 ScriptingBridge，位于
+/System/Library/Frameworks/Python.framework/Versions/Current/Extras/lib/python/PyObjC/
+可以通过这个 bridge 获取 iTunes 的文件并对信息进行更改， 随后可以使用其他库或者脚本，转成拼音（或者罗马音）</description></item></channel></rss>
